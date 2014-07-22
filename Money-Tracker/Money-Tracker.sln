@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money-Tracker", "Money-Tracker\Money-Tracker.csproj", "{12ACC701-C426-4BD5-BB11-F1EF1C54DDBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12ACC701-C426-4BD5-BB11-F1EF1C54DDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12ACC701-C426-4BD5-BB11-F1EF1C54DDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12ACC701-C426-4BD5-BB11-F1EF1C54DDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12ACC701-C426-4BD5-BB11-F1EF1C54DDBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
