@@ -1,0 +1,6 @@
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\Money-Tracker\bin\Money-Tracker.dll.config
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\Money-Tracker\bin\Money-Tracker.dll
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\Money-Tracker\bin\Money-Tracker.pdb
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\Money-Tracker\obj\Debug\Money-Tracker.csprojResolveAssemblyReference.cache
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\Money-Tracker\obj\Debug\Money-Tracker.dll
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\Money-Tracker\obj\Debug\Money-Tracker.pdb
