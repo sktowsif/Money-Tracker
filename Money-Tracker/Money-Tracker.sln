@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio Express 2012 for Web
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money-Tracker", "Money-Tracker\Money-Tracker.csproj", "{12ACC701-C426-4BD5-BB11-F1EF1C54DDBB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlConnectorLib", "D:\my project\office\console\PayRollApplication\SqlConnectorLib\SqlConnectorLib.csproj", "{F523B4F8-0F17-4A75-8E96-244356F1B4CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbUtil", "C:\Users\Towsif\Documents\Visual Studio 2012\Projects\DbUtil\DbUtil\DbUtil.csproj", "{DAE8844D-B92E-4964-84FA-6DAA5B64BBAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +21,10 @@ Global
 		{F523B4F8-0F17-4A75-8E96-244356F1B4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F523B4F8-0F17-4A75-8E96-244356F1B4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F523B4F8-0F17-4A75-8E96-244356F1B4CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAE8844D-B92E-4964-84FA-6DAA5B64BBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE8844D-B92E-4964-84FA-6DAA5B64BBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE8844D-B92E-4964-84FA-6DAA5B64BBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE8844D-B92E-4964-84FA-6DAA5B64BBAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -116,6 +116,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntityClasses\Category.cs" />
     <Compile Include="EntityClasses\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Websites\WebForm1.aspx.cs">
@@ -134,7 +135,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\Towsif\Documents\Visual Studio 2012\Projects\DbUtil\DbUtil\DbUtil.csproj">
+      <Project>{dae8844d-b92e-4964-84fa-6daa5b64bbae}</Project>
+      <Name>DbUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
