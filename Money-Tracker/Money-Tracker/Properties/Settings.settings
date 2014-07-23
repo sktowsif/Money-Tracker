@@ -1,0 +1,26 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Money_Tracker.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="User_Cols" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Id|Name|Email|Password|Type|Country</Value>
+    </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=.;Initial Catalog=MoneyManagenent;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="InsertUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO [dbo].[User]
+           ([Name]
+           ,[Email]
+           ,[Password]
+           ,[Type]
+           ,[Country])
+     VALUES
+           (Name=@Name
+           ,Email=@Email
+           ,Password=@Password
+           ,Type=@Type
+           ,Country=@Country)</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
