@@ -20,7 +20,7 @@ namespace Money_Tracker.EntityClasses
         {
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             DateTime Today = DateTime.Today;
-            Date = Today.ToString("yyyy-mm-dd");
+            Date = Today.ToString("yyyy-MM-dd");
 
             string strQuery = Properties.Settings.Default.Expense_INSERT;
             string[] strArrColNames = new string[] { strArrColumn[0], strArrColumn[1], strArrColumn[2], strArrColumn[3] };

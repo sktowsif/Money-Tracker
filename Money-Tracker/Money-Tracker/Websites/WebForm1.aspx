@@ -66,23 +66,46 @@
 
                         <div class="panel" id="aboutus">
                             <h1>Login</h1>
-                            <form method="post" name="contact">
-                                <div id="contact_form1">
-                                <label for="author">Your Name:</label>
-                                <input type="text" id="a" name="author" class="required input_field" />
-                                    <input type="text" id="a" name="author" class="required input_field" />
-                                    <input type="text" id="a" name="author" class="required input_field" />
-                                    <input type="text" id="a" name="author" class="required input_field" />
-                                    <input type="text" id="a" name="author" class="required input_field" />
-                                    <input type="text" id="a" name="author" class="required input_field" />
-                                    <input type="text" id="a" name="author" class="required input_field" />
-                                    <input type="text" id="a" name="author" class="required input_field" />
-                                <div class="cleaner_h10"></div>
-                                    </div>
-                            </form>
+
+                            <div class="contact_form">
+                                <form method="post" name="contact">
+                                    <label for="author">User Id</label>
+                                    <input type="text" id="txtUserId" name="author" class="required input_field" />
+                                    <div class="cleaner_h10"></div>
+                                    <label for="Pswd">Password</label>
+                                    <input type="text" id="txtPswd" name="author" class="required input_field" />
+                                    <div class="cleaner_h10"></div>
+                                    <input type="button" class="submit_btn" name="submit" id="btnLogin" value="Send" />
+                                </form>
+                            </div>
+
                         </div>
 
                         <div class="panel" id="services">
+                            <div class="contact_form">
+                                <form method="post" name="Register">
+                                    <label for="txtUser">User Id</label>
+                                    <input type="text" id="txtUser" name="author" class="required input_field" />
+                                    <div class="cleaner_h10"></div>
+                                    <label for="txtPwd">Password</label>
+                                    <input type="text" id="txtPwd" name="author" class="required input_field" />
+                                    <div class="cleaner_h10"></div>
+                                    <label for="txtConPwd">Confirm Password</label>
+                                    <input type="text" id="txtConPwd" name="author" class="required input_field" />
+                                    <div class="cleaner_h10"></div>
+                                    <label for="txtEmail">Email</label>
+                                    <input type="text" id="txtEmail" name="author" class="required input_field" />
+                                    <div class="cleaner_h10"></div>
+                                    <label for="ddlCountry">Country</label>
+                                    <select id="ddlCountry" class="required input_field">
+                                        <option>Select Country</option>
+
+                                    </select>
+                                    <div class="cleaner_h10"></div>
+
+                                    <input type="button" class="submit_btn" name="submit" id="btnRegister" value="Register" />
+                                </form>
+                            </div>
                         </div>
 
                         <div class="panel" id="gallery">
@@ -90,11 +113,11 @@
 
                         <div class="panel" id="contactus">
                             <h1>Feel free to send us a message</h1>
-                            <div id="contact_form">
+                            <div id="contact_form1">
                                 <form method="post" name="contact">
 
                                     <label for="author">Your Name:</label>
-                                    <input type="text" id="author" name="author" class="required input_field" />
+                                    <input type="text" id="author1" name="author" class="required input_field" />
                                     <div class="cleaner_h10"></div>
 
                                     <label for="email">Your Email:</label>
