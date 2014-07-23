@@ -1,0 +1,8 @@
+D:\my project\office\console\PayRollApplication\SqlConnectorLib\bin\Debug\SqlConnectorLib.dll
+D:\my project\office\console\PayRollApplication\SqlConnectorLib\bin\Debug\SqlConnectorLib.pdb
+D:\my project\office\console\PayRollApplication\SqlConnectorLib\obj\Debug\SqlConnectorLib.dll
+D:\my project\office\console\PayRollApplication\SqlConnectorLib\obj\Debug\SqlConnectorLib.pdb
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\SQLConnector\bin\Debug\SqlConnectorLib.dll
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\SQLConnector\bin\Debug\SqlConnectorLib.pdb
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\SQLConnector\obj\Debug\SqlConnectorLib.dll
+C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\SQLConnector\obj\Debug\SqlConnectorLib.pdb
