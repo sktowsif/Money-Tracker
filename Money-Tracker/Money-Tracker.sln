@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Money-Tracker", "Money-Trac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlConnectorLib", "SQLConnector\SqlConnectorLib.csproj", "{F523B4F8-0F17-4A75-8E96-244356F1B4CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValueTypeCasting", "ValueTypeCasting\ValueTypeCasting.csproj", "{0BCF176D-2197-4BDB-9D20-3C5A79EDCD31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F523B4F8-0F17-4A75-8E96-244356F1B4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F523B4F8-0F17-4A75-8E96-244356F1B4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F523B4F8-0F17-4A75-8E96-244356F1B4CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BCF176D-2197-4BDB-9D20-3C5A79EDCD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BCF176D-2197-4BDB-9D20-3C5A79EDCD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BCF176D-2197-4BDB-9D20-3C5A79EDCD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BCF176D-2197-4BDB-9D20-3C5A79EDCD31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
