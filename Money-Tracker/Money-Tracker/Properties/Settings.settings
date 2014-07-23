@@ -22,5 +22,26 @@
            ,Type=@Type
            ,Country=@Country)</Value>
     </Setting>
+    <Setting Name="Category_Cols" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Id|Name|Type</Value>
+    </Setting>
+    <Setting Name="Category_INSERT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO [Category] VALUES ([Name],[Type])</Value>
+    </Setting>
+    <Setting Name="Category_DELETE" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DELETE FROM [Category] WHERE Id=@Id</Value>
+    </Setting>
+    <Setting Name="Expense_Cols" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">User_Id|Expense|Date|Category_Id</Value>
+    </Setting>
+    <Setting Name="Expense_INSERT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO [Expense] VALUES ([User_Id],[Expense],[Date],[Category_Id])</Value>
+    </Setting>
+    <Setting Name="Income_Cols" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">User_Id|Expense|Date|Category_Id</Value>
+    </Setting>
+    <Setting Name="Income_INSERT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO [Income] VALUES ([User_Id],[Expense],[Date],[Category_Id])</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
