@@ -60,5 +60,81 @@ namespace Money_Tracker.Properties {
                 return ((string)(this["InsertUser"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("UPDATE [dbo].[User]\r\n   SET [Name] = @Name\r\n      ,[Email] = @Email\r\n      ,[Pass" +
+            "word] = @Password\r\n      ,[Type] = @Type\r\n      ,[Country] = @Country\r\n WHERE Id" +
+            "=@Id")]
+        public string UpdateUser {
+            get {
+                return ((string)(this["UpdateUser"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DELETE FROM [dbo].[User]\r\n      WHERE Id=@Id")]
+        public string DeleteUser {
+            get {
+                return ((string)(this["DeleteUser"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("INSERT INTO [dbo].[Country]\r\n           ([Name]\r\n           ,[Currency])\r\n     VA" +
+            "LUES\r\n           (Name=@Name\r\n           ,Currency=@Currency)")]
+        public string InsertCountry {
+            get {
+                return ((string)(this["InsertCountry"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("UPDATE [dbo].[Country]\r\n   SET [Name] = @Name\r\n      ,[Currency] = @Currency\r\n WH" +
+            "ERE Id=@Id")]
+        public string UpdateCountry {
+            get {
+                return ((string)(this["UpdateCountry"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DELETE FROM [dbo].[Country]\r\n      WHERE Id=@Id")]
+        public string DeleteCountry {
+            get {
+                return ((string)(this["DeleteCountry"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Id|Name|")]
+        public string Country_Cols {
+            get {
+                return ((string)(this["Country_Cols"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("User_id|Date|Expense|Income|Balance")]
+        public string Balance_cols {
+            get {
+                return ((string)(this["Balance_cols"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InsertBalance {
+            get {
+                return ((string)(this["InsertBalance"]));
+            }
+        }
     }
 }
