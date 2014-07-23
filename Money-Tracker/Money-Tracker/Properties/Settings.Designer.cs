@@ -60,6 +60,25 @@ namespace Money_Tracker.Properties {
                 return ((string)(this["InsertUser"]));
             }
         }
+
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Id|Name|")]
+        public string Country_Cols {
+            get {
+                return ((string)(this["Country_Cols"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("User_id|Date|Expense|Income|Balance")]
+        public string Balance_cols {
+            get {
+                return ((string)(this["Balance_cols"]));
+            }
+        }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -120,7 +139,35 @@ namespace Money_Tracker.Properties {
         [global::System.Configuration.DefaultSettingValueAttribute("INSERT INTO [Income] VALUES ([User_Id],[Expense],[Date],[Category_Id])")]
         public string Income_INSERT {
             get {
-                return ((string)(this["Income_INSERT"]));
+                return ((string)(this["Balance_cols"]));
+            }
+        }
+
+
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Id|Name|")]
+        public string Country_Cols {
+            get {
+                return ((string)(this["Country_Cols"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("User_id|Date|Expense|Income|Balance")]
+        public string Balance_cols {
+            get {
+                return ((string)(this["Balance_cols"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InsertBalance {
+            get {
+                return ((string)(this["InsertBalance"]));
             }
         }
     }
