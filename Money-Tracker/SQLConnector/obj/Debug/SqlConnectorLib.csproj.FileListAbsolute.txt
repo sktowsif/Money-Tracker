@@ -11,4 +11,3 @@ E:\GITHUB\Money-Tracker\Money-Tracker\SQLConnector\bin\Debug\SqlConnectorLib.pdb
 E:\GITHUB\Money-Tracker\Money-Tracker\SQLConnector\obj\Debug\SqlConnectorLib.csprojResolveAssemblyReference.cache
 E:\GITHUB\Money-Tracker\Money-Tracker\SQLConnector\obj\Debug\SqlConnectorLib.dll
 E:\GITHUB\Money-Tracker\Money-Tracker\SQLConnector\obj\Debug\SqlConnectorLib.pdb
-C:\Users\Swathi Manindra\Documents\GitHub\Money-Tracker\Money-Tracker\SQLConnector\obj\Debug\SqlConnectorLib.csprojResolveAssemblyReference.cache

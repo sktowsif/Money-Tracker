@@ -20,20 +20,7 @@ namespace Money_Tracker.EntityClasses
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             return objSqlConLib.ExecuteQuery(Properties.Settings.Default.InsertUser, strArrColCountry, objArrColValuesCountry);
         }
-        public bool UpdateOperation()
-        {
-            object[] objArrColValuesCountry = { this.Id, this.Name, this.Currency };
-            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
-            return objSqlConLib.ExecuteQuery(Properties.Settings.Default.UpdateUser, strArrColValuesCountry, objArrColValuesCountry);
-        }
-
-        public bool DeleteOperation()
-        {
-            string[] strArrCol = {strArrColValuesCountry[0]};
-            object[] objArrColValuesUser = { this.Id};
-            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
-            return objSqlConLib.ExecuteQuery(Properties.Settings.Default.DeleteUser, strArrCol, objArrColValuesUser);
-        }
+       
 
     }
 }

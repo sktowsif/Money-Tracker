@@ -22,25 +22,6 @@
            ,Type=@Type
            ,Country=@Country)</Value>
     </Setting>
-
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Id|Name|")]
-        public string Country_Cols {
-            get {
-                return ((string)(this["Country_Cols"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("User_id|Date|Expense|Income|Balance")]
-        public string Balance_cols {
-            get {
-                return ((string)(this["Balance_cols"]));
-            }
-        }
-
     <Setting Name="Category_Cols" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Id|Name|Type</Value>
     </Setting>
@@ -61,6 +42,46 @@
     </Setting>
     <Setting Name="Income_INSERT" Type="System.String" Scope="Application">
       <Value Profile="(Default)">INSERT INTO [Income] VALUES ([User_Id],[Expense],[Date],[Category_Id])</Value>
+    </Setting>
+    <Setting Name="UpdateUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UPDATE [dbo].[User]
+   SET [Name] = @Name
+      ,[Email] = @Email
+      ,[Password] = @Password
+      ,[Type] = @Type
+      ,[Country] = @Country
+ WHERE Id=@Id</Value>
+    </Setting>
+    <Setting Name="DeleteUser" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DELETE FROM [dbo].[User]
+      WHERE Id=@Id</Value>
+    </Setting>
+    <Setting Name="InsertCountry" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO [dbo].[Country]
+           ([Name]
+           ,[Currency])
+     VALUES
+           (Name=@Name
+           ,Currency=@Currency)</Value>
+    </Setting>
+    <Setting Name="UpdateCountry" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">UPDATE [dbo].[Country]
+   SET [Name] = @Name
+      ,[Currency] = @Currency
+ WHERE Id=@Id</Value>
+    </Setting>
+    <Setting Name="DeleteCountry" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">DELETE FROM [dbo].[Country]
+      WHERE Id=@Id</Value>
+    </Setting>
+    <Setting Name="Country_Cols" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Id|Name|</Value>
+    </Setting>
+    <Setting Name="Balance_cols" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">User_id|Date|Expense|Income|Balance</Value>
+    </Setting>
+    <Setting Name="InsertBalance" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

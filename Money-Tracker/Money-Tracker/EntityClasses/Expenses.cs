@@ -36,6 +36,7 @@ namespace Money_Tracker.EntityClasses
                 DataTable dtTable = objSqlConLib1.SelectQuery(@"Select sum(Expence) from expense where date between @ad and @dtdate" , strColValuesTier1, objArrColValuesTier1);
                 SqlConLib objSqlConLib2 = new SqlConLib(Properties.Settings.Default.ConnectionString);
                 DataTable dtTable1 = objSqlConLib2.SelectQuery(@"Select sum(Income) from Income where date between @ad and @dtdate", strColValuesTier1, objArrColValuesTier1);
+
                 ad = dtdate;
                 dtdate = ad.AddDays(7);
                 

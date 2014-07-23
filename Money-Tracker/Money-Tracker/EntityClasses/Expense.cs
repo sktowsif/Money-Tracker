@@ -9,7 +9,7 @@ namespace Money_Tracker.EntityClasses
     public class Expense
     {
         public int User_Id { get; set; }
-        public decimal Expense { get; set; }
+        public decimal Expenses { get; set; }
         public string Date { get; set; }
         public int Category_Id { get; set; }
 
@@ -24,7 +24,7 @@ namespace Money_Tracker.EntityClasses
 
             string strQuery = Properties.Settings.Default.Expense_INSERT;
             string[] strArrColNames = new string[] { strArrColumn[0], strArrColumn[1], strArrColumn[2], strArrColumn[3] };
-            object[] objArrColValue = new object[] { this.User_Id, this.Expense, Date, this.Category_Id };
+            object[] objArrColValue = new object[] { this.User_Id, this.Expenses, Date, this.Category_Id };
 
             return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
         }
