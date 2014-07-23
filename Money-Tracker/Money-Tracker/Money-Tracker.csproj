@@ -118,6 +118,8 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EntityClasses\Expenses.cs" />
+    <Compile Include="EntityClasses\Inc.cs" />
     <Compile Include="EntityClasses\RemainingBalance.cs" />
     <Compile Include="EntityClasses\Category.cs" />
     <Compile Include="EntityClasses\Expense.cs" />

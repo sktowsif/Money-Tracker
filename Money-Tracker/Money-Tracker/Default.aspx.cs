@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Money_Tracker.EntityClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,9 @@ namespace Money_Tracker
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            DateTime i= DateTime.Today;
+            Expenses obj = new Expenses();
+            obj.GetAll(i);
 
         }
     }
