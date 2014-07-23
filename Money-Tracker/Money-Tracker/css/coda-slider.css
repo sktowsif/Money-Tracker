@@ -49,15 +49,15 @@
 
 #content { 
 	height: 455px;
-	width: 600px;
-	background: url(../images/templatemo_content.jpg) no-repeat;
+	width: 800px;
+	background: url(../images/templatemo_content.jpg) none;
 }
 
 .scroll {
     height: 455px;
-    width: 600px;
+    width: 800px;
     overflow: auto;
-/*  overflow-x: hidden; */
+    overflow-x: hidden;
     position: relative;
     clear: left;
 }
@@ -65,7 +65,7 @@
 .scrollContainer div.panel {
     padding: 30px;
     height: 395px;
-    width: 540px;
+    width: 800px;
 }
 
 ul.navigation {
