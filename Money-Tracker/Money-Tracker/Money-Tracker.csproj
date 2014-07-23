@@ -145,9 +145,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\Towsif\Documents\Visual Studio 2012\Projects\DbUtil\DbUtil\DbUtil.csproj">
-      <Project>{dae8844d-b92e-4964-84fa-6daa5b64bbae}</Project>
-      <Name>DbUtil</Name>
     <ProjectReference Include="D:\my project\office\console\PayRollApplication\SqlConnectorLib\SqlConnectorLib.csproj">
       <Project>{f523b4f8-0f17-4a75-8e96-244356f1b4ca}</Project>
       <Name>SqlConnectorLib</Name>

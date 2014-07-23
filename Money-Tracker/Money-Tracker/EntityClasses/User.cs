@@ -15,7 +15,6 @@ namespace Money_Tracker.EntityClasses
         public string Password { get; set; }
         public string Type { get; set; }
         public string Country { get; set;}
-
         public bool InsertOperation()
         {
             string[] strColValuesUser = Properties.Settings.Default.User_Cols.Split('|');
@@ -24,6 +23,5 @@ namespace Money_Tracker.EntityClasses
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             return objSqlConLib.ExecuteQuery(Properties.Settings.Default.InsertUser, strColValuesUser, objArrColValuesUser);
         }
-
     }
 }
