@@ -15,6 +15,7 @@ namespace Money_Tracker.EntityClasses
         public string Password { get; set; }
         public string Type { get; set; }
         public string Country { get; set;}
+
         string[] strArrColValuesUser = Properties.Settings.Default.User_Cols.Split('|');
         public bool InsertOperation()
         {

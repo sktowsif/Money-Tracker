@@ -1,8 +1,10 @@
 ﻿using SqlConnectorLib;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
+using ValueTypeCasting;
 
 namespace Money_Tracker.EntityClasses
 {
@@ -13,6 +15,12 @@ namespace Money_Tracker.EntityClasses
         public string Date { get; set; }
         public int Category_Id { get; set; }
 
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+             
         string[] strArrColumn = Properties.Settings.Default.Income_Cols.Split('|');
 
         public bool Insert()
@@ -27,7 +35,23 @@ namespace Money_Tracker.EntityClasses
 
             return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
         }
-
+public List<Income> GetAllIncomeCategories(string strType)
+        {
+            this.Type = strType;
+            string[] strColValues = { "Type"};
+            object[] objArrColValues = { this.Type};
+            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
+            DataTable dtTable = objSqlConLib.SelectQuery("Select Id,Name from Category where Type=@Type", strColValues, objArrColValues);
+            List<Income> lstIncome = new List<Income>();
+            for (int i = 0; i < dtTable.Rows.Count; i++)
+            {
+                Income objIncome = new Income();
+                objIncome.Id =TypeTranslation.GetInt( dtTable.Rows[i]["Id"].ToString());
+                objIncome.Name = dtTable.Rows[i]["Name"].ToString();
+                lstIncome.Add(objIncome);
+            }
+            return lstIncome;
+        }
 
     }
 }
