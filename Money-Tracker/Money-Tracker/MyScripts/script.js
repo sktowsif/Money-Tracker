@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
-    ajaxCaller("WebForm1.aspx/GetAllIncome", "{}", SuccessCall, FailureCall);
-    ajaxCaller("WebForm1.aspx/GetAllExpense", "{}", SuccessCallExp, FailureCall);
+    ajaxCaller("MoneyTracker.aspx/GetAllIncome", "{}", SuccessCall, FailureCall);
+    ajaxCaller("MoneyTracker.aspx/GetAllExpense", "{}", SuccessCallExp, FailureCall);
     $("#btnIncome").click(function () {
 
         insertIncome();
