@@ -16,6 +16,8 @@
     <script src="../js/jquery.serialScroll-1.2.1.js" charset="utf-8"></script>
     <script src="../js/coda-slider.js" charset="utf-8"></script>
     <script src="../js/jquery.easing.1.3.js" charset="utf-8"></script>
+    <link href="../css/Mycss.css" rel="stylesheet" />
+    <script src="../MyScripts/script.js"></script>
 </head>
 <body>
     <div id="slider">
@@ -30,7 +32,7 @@
 
             <ul class="navigation">
                 <li><a href="#home">Home<span class="ui_icon home"></span></a></li>
-                <li><a href="#aboutus">Login<span class="ui_icon aboutus"></span></a></li>
+                <li><a href="#aboutus">Add Income/Expense<span class="ui_icon aboutus"></span></a></li>
                 <li><a href="#services">Register<span class="ui_icon services"></span></a></li>
                 <li><a href="#gallery">Status<span class="ui_icon gallery"></span></a></li>
                 <li><a href="#contactus">Contact Us<span class="ui_icon contactus"></span></a></li>
@@ -65,17 +67,35 @@
                         <!-- end of home -->
 
                         <div class="panel" id="aboutus">
-                            <h1>Login</h1>
-
                             <div class="contact_form">
                                 <form method="post" name="contact">
-                                    <label for="author">User Id</label>
-                                    <input type="text" id="txtUserId" name="author" class="required input_field" />
-                                    <div class="cleaner_h10"></div>
-                                    <label for="Pswd">Password</label>
-                                    <input type="text" id="txtPswd" name="author" class="required input_field" />
-                                    <div class="cleaner_h10"></div>
-                                    <input type="button" class="submit_btn" name="submit" id="btnLogin" value="Send" />
+                                        <fieldset class="fld">
+                                            <legend>Income</legend>
+                                            <label for="txtIncAmount">Amount</label>
+                                            <input type="text" id="txtIncAmount" name="author" class="required input_field" />
+                                            <div class="cleaner_h10"></div>
+                                            <label for="ddlCategory">Category</label>
+                                            <select id="ddlIncCategory" class="required input_field">
+                                                <option>Select Category</option>
+                                            </select>
+                                            <div class="cleaner_h10"></div>
+                                            <input type="button" class="submit_btn" name="submit" id="btnIncome" value="Add" />
+                                        </fieldset>
+                                    <div class="flddiv">
+                                        &nbsp;
+                                    </div>
+                                        <fieldset class="fld">
+                                            <legend>Expenses</legend>
+                                            <label for="txtExpAmount">Amount</label>
+                                            <input type="text" id="txtExpAmount" name="author" class="required input_field" />
+                                            <div class="cleaner_h10"></div>
+                                            <label for="ddlExpCategory">Category</label>
+                                            <select id="ddlExpCategory" class="required input_field">
+                                                <option>Select Category</option>
+                                            </select>
+                                            <div class="cleaner_h10"></div>
+                                            <input type="button" class="submit_btn" name="submit" id="btnExpense" value="Add" />
+                                        </fieldset>
                                 </form>
                             </div>
 
@@ -96,12 +116,7 @@
                                     <label for="txtEmail">Email</label>
                                     <input type="text" id="txtEmail" name="author" class="required input_field" />
                                     <div class="cleaner_h10"></div>
-                                    <label for="ddlCountry">Country</label>
-                                    <select id="ddlCountry" class="required input_field">
-                                        <option>Select Country</option>
 
-                                    </select>
-                                    <div class="cleaner_h10"></div>
 
                                     <input type="button" class="submit_btn" name="submit" id="btnRegister" value="Register" />
                                 </form>
@@ -151,8 +166,5 @@
 
     </div>
     <!-- end of main -->
-    </div>
-
-    </form>
 </body>
 </html>
