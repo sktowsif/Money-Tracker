@@ -83,5 +83,8 @@
     <Setting Name="InsertBalance" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Country_SELECT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">SELECT [Id],[Name] FROM [Country]</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -27,5 +27,7 @@ namespace Money_Tracker.EntityClasses
 
             return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
         }
+
+
     }
 }
