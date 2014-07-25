@@ -86,5 +86,8 @@
     <Setting Name="Country_SELECT" Type="System.String" Scope="Application">
       <Value Profile="(Default)">SELECT [Id],[Name] FROM [Country]</Value>
     </Setting>
+    <Setting Name="User_INSERT" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">INSERT INTO [User] ([Name],[Gender],[Email],[Password],[Type],[Country]) VALUES (@Name,@Gender,@Email,@Password,@Type,@Country)</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

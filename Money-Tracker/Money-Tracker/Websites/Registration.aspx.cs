@@ -23,9 +23,10 @@ namespace Money_Tracker.Websites
         }
 
         [WebMethod]
-        public static void InsertUser()
+        public static void InsertUser(object[] objUserData)
         {
-
+            User objUser = new User();
+            objUser.Insert(objUserData);
         }
     }
 

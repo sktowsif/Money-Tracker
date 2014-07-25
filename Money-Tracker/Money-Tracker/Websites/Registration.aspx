@@ -47,7 +47,6 @@
                 </select>
             </div>
             <div>
-
                 <input type="button" value="Sign up" id="btn_register" class="btnColor alignControls" />
             </div>
         </div>

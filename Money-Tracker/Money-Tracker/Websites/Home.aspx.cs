@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using Money_Tracker.EntityClasses;
+using System;
+using System.Web.Services;
 
 namespace Money_Tracker.Websites
 {
@@ -12,6 +9,14 @@ namespace Money_Tracker.Websites
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        [WebMethod]
+        public static int CheckLoginDetails(object[] objCred)
+        {
+            User objUser = new User();
+            int intUserID = objUser.IsValidLogin(objCred);
+            return intUserID;
         }
     }
 }

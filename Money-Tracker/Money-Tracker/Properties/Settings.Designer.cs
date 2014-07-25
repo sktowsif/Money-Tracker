@@ -208,5 +208,15 @@ namespace Money_Tracker.Properties {
                 return ((string)(this["Country_SELECT"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("INSERT INTO [User] ([Name],[Gender],[Email],[Password],[Type],[Country]) VALUES (" +
+            "@Name,@Gender,@Email,@Password,@Type,@Country)")]
+        public string User_INSERT {
+            get {
+                return ((string)(this["User_INSERT"]));
+            }
+        }
     }
 }

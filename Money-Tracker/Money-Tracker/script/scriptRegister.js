@@ -2,6 +2,11 @@
     
     //populate the country drop down list
     ajaxCall('Registration.aspx/FillCountryDropDown', '{}', BindCountry, ErrorCallBack);
+
+    // button register action
+    $('#btn_register').click(function () {
+        GetUserDetails();
+    });
 })
 
 // Ajax Call 
@@ -35,6 +40,8 @@ function BindCountry(data) {
     BindDropDown('#ddlCountry',country,"Name","Id");
 }
 
+// get the user data from registration form
+// and store in database using ajax
 function GetUserDetails() {
     var name = $('#txt_name').val();
     var email = $('#txt_email').val();
@@ -46,7 +53,12 @@ function GetUserDetails() {
     // find the country selected
     var $selectedOpt = $('#ddlCountry').find('option:selected');
     var country = $selectedOpt.text();
+    
+    var objUserData = JSON.stringify({"objUserData":[name,gender,email,pwd,country] });
 
-
+    ajaxCall('Registration.aspx/InsertUser', objUserData, SuccessUserInsert, ErrorCallBack);
 }
 
+function SuccessUserInsert() {
+    alert("User Inserted");
+}

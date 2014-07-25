@@ -21,7 +21,9 @@
     <script src="../js/coda-slider.js" charset="utf-8"></script>
     <script src="../js/jquery.easing.1.3.js" charset="utf-8"></script>
     <link href="../css/Mycss.css" rel="stylesheet" />
+    <script src="../script/jquery.session.min.js"></script>
     <script src="../MyScripts/script.js"></script>
+    <script src="../script/scriptMoneyTracker.js"></script>
 </head>
 
 <body>
