@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Money_Tracker {
+namespace Money_Tracker.Websites {
     
     
-    public partial class Income {
+    public partial class UserExpense {
     }
 }

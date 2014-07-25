@@ -23,9 +23,17 @@ namespace Money_Tracker.Websites
             return objIncome.GetAllIncomeCategories("Expense");
         }
         [WebMethod]
-        public static void InsertUser(object[] objIncome)
+        public static void InsertIncome(object[] objIncome)
         {
+            Income objectIncome = new Income();
+            objectIncome.InsertIncome(objIncome);
+        }
 
+        [WebMethod]
+        public static void InsertExpense(object[] objExpense)
+        {
+            Expense objectExpense = new Expense();
+            objectExpense.InsertExpense(objExpense);
         }
         protected void Page_Load(object sender, EventArgs e)
         {

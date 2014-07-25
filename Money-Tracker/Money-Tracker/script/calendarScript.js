@@ -40,6 +40,7 @@ function DataForCalendar(data) {
             center: 'title',
             right: 'month,basicWeek,basicDay'
         },
+        aspectRatio:6,
         defaultDate: new Date(),
         editable: true,
         events: calendarArray,

@@ -20,7 +20,7 @@ namespace Money_Tracker.Websites
         public static List<Expense> GetExpense()
         {
             Expense objExpense = new Expense();
-            List<Expense> lstExpense=objExpense.GetExpense(1);
+            List<Expense> lstExpense=objExpense.GetExpense();
             return lstExpense;
             
         }

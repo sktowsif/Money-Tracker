@@ -5,22 +5,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../Chart/jquery-1.11.1.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="mini social, free download, website templates, CSS, HTML" />
     <meta name="description" content="Mini Social is a free website template from templatemo.com" />
+
     <link href="../css/templatemo_style.css" rel="stylesheet" />
-    <link href="../css/coda-slider.css" rel="stylesheet" media="screen" charset="utf-8" />
+    <link href="../css/coda-slider.css" rel="stylesheet" media="screen" />
     <script src="../js/jquery-1.2.6.js"></script>
+
     <script src="../js/jquery.scrollTo-1.3.3.js"></script>
     <script src="../js/jquery.localscroll-1.2.5.js"></script>
     <script src="../js/jquery.serialScroll-1.2.1.js" charset="utf-8"></script>
+
     <script src="../js/coda-slider.js" charset="utf-8"></script>
     <script src="../js/jquery.easing.1.3.js" charset="utf-8"></script>
     <link href="../css/Mycss.css" rel="stylesheet" />
     <script src="../MyScripts/script.js"></script>
 </head>
+
 <body>
-   <div id="slider">
+    <div id="slider">
 
         <div id="templatemo_sidebar">
             <div id="templatemo_header">
@@ -63,39 +68,53 @@
                     <div class="scrollContainer">
 
                         <div class="panel" id="home">
+                            <h1>Welcome</h1>
+                            <div id="contDiv">
+                                <a href="UserExpense.aspx">Click Here For Details</a>
+                                &nbsp;
+                            </div>
+                            <div id="divImg">
+                                <img src="../images/Dollar.jpg" id="imgDollar" />
+                            </div>
                         </div>
                         <!-- end of home -->
 
                         <div class="panel" id="aboutus">
                             <div class="contact_form">
-                                <form method="post" name="contact">
-                                        <fieldset class="fld">
-                                            <legend>Income</legend>
-                                            <label for="txtIncAmount">Amount</label>
-                                            <input type="text" id="txtIncAmount" name="author" class="required input_field" />
-                                            <div class="cleaner_h10"></div>
-                                            <label for="ddlCategory">Category</label>
-                                            <select id="ddlIncCategory" class="required input_field">
-                                                <option>Select Category</option>
-                                            </select>
-                                            <div class="cleaner_h10"></div>
-                                            <input type="button" class="submit_btn" name="submit" id="btnIncome" value="Add" />
-                                        </fieldset>
+                                <form method="post" name="contact" id="IncomeExp">
+                                    <fieldset class="fld">
+                                        <legend>Income</legend>
+                                        <label for="txtIncAmount">Amount <span class="star">*</span></label>
+                                        <input type="text" id="txtIncAmount" name="author" class="required input_field" />
+                                        <div class="cleaner_h10"></div>
+                                        <label for="ddlCategory">Category <span class="star">*</span></label>
+                                        <select id="ddlIncCategory" class="required input_field">
+                                            <option>Select Category</option>
+                                        </select>
+                                        <div class="cleaner_h10"></div>
+                                        <label for="txtIncNote">Note <span class="star">*</span></label>
+                                        <input type="text" id="txtIncNote" name="author" class="required input_field" />
+                                        <div class="cleaner_h10"></div>
+                                        <input type="button" class="submit_btn" name="submit" id="btnIncome" value="Add" />
+                                    </fieldset>
                                     <div class="flddiv">
                                         &nbsp;
                                     </div>
-                                        <fieldset class="fld">
-                                            <legend>Expenses</legend>
-                                            <label for="txtExpAmount">Amount</label>
-                                            <input type="text" id="txtExpAmount" name="author" class="required input_field" />
-                                            <div class="cleaner_h10"></div>
-                                            <label for="ddlExpCategory">Category</label>
-                                            <select id="ddlExpCategory" class="required input_field">
-                                                <option>Select Category</option>
-                                            </select>
-                                            <div class="cleaner_h10"></div>
-                                            <input type="button" class="submit_btn" name="submit" id="btnExpense" value="Add" />
-                                        </fieldset>
+                                    <fieldset class="fld">
+                                        <legend>Expenses</legend>
+                                        <label for="txtExpAmount">Amount <span class="star">*</span></label>
+                                        <input type="text" id="txtExpAmount" name="author" class="required input_field" />
+                                        <div class="cleaner_h10"></div>
+                                        <label for="ddlExpCategory">Category <span class="star">*</span></label>
+                                        <select id="ddlExpCategory" class="required input_field">
+                                            <option>Select Category</option>
+                                        </select>
+                                        <div class="cleaner_h10"></div>
+                                        <label for="txtExpNote">Note <span class="star">*</span></label>
+                                        <input type="text" id="txtExpNote" name="author" class="required input_field" />
+                                        <div class="cleaner_h10"></div>
+                                        <input type="button" class="submit_btn" name="submit" id="btnExpense" value="Add" />
+                                    </fieldset>
                                 </form>
                             </div>
 
@@ -128,25 +147,8 @@
 
                         <div class="panel" id="contactus">
                             <h1>Feel free to send us a message</h1>
-                            <div id="contact_form1">
-                                <form method="post" name="contact">
-
-                                    <label for="author">Your Name:</label>
-                                    <input type="text" id="author1" name="author" class="required input_field" />
-                                    <div class="cleaner_h10"></div>
-
-                                    <label for="email">Your Email:</label>
-                                    <input type="text" id="email" name="email" class="validate-email required input_field" />
-                                    <div class="cleaner_h10"></div>
-
-                                    <label for="text">Message:</label>
-                                    <textarea id="text" name="text" rows="0" cols="0" class="required"></textarea>
-                                    <div class="cleaner_h10"></div>
-
-                                    <input type="submit" class="submit_btn" name="submit" id="submit" value="Send" />
-                                    <input type="reset" class="submit_btn" name="reset" id="reset" value="Reset" />
-
-                                </form>
+                            <div>
+                                <div id="jqChart" style="width: 500px; height: 300px;"></div>
                             </div>
                         </div>
                     </div>

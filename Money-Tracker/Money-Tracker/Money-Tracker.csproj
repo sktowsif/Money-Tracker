@@ -41,6 +41,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,70 +67,19 @@
     <Content Include="css\styleLogin.css" />
     <Content Include="css\styleRegister.css" />
     <Content Include="css\templatemo_style.css" />
-    <Content Include="Chart\assets\css\mainstyle.css" />
-    <Content Include="Chart\assets\img\blog-icon.png" />
-    <Content Include="Chart\assets\img\fusionchart-xt-doc-logo.png" />
-    <Content Include="Chart\assets\img\fusioncharts-logo.png" />
-    <Content Include="Chart\assets\img\fusioncharts-suite-logo.png" />
-    <Content Include="Chart\assets\img\glyphicons-halflings-white.png" />
-    <Content Include="Chart\assets\img\glyphicons-halflings.png" />
-    <Content Include="Chart\assets\img\homepage-device-img.png" />
-    <Content Include="Chart\assets\img\left-bracket.png" />
-    <Content Include="Chart\assets\img\logo-docs-landing-library-only.png" />
-    <Content Include="Chart\assets\img\logo-main-footer.png" />
-    <Content Include="Chart\assets\img\logo-main-header%402x.png" />
-    <Content Include="Chart\assets\img\logo-main-header.png" />
-    <Content Include="Chart\assets\img\logo-maps-landing.png" />
-    <Content Include="Chart\assets\img\logo.png" />
-    <Content Include="Chart\assets\img\nav-arrows.png" />
-    <Content Include="Chart\assets\img\open-folder.png" />
-    <Content Include="Chart\assets\img\or-bg.png" />
-    <Content Include="Chart\assets\img\right-bracket.png" />
-    <Content Include="Chart\assets\img\section-divider.png" />
-    <Content Include="Chart\assets\img\sprite.png" />
-    <Content Include="Chart\assets\img\support-icon.png" />
-    <Content Include="Chart\assets\img\top-repeat-bg.png" />
-    <Content Include="Chart\assets\img\white-texture.png" />
-    <Content Include="Chart\assets\img\world-map.png" />
-    <Content Include="Chart\assets\scripts\bootstrap-dropdown.js" />
-    <Content Include="Chart\assets\scripts\bootstrap-tab.js" />
-    <Content Include="Chart\assets\scripts\jquery.localScroll.js" />
-    <Content Include="Chart\assets\scripts\jquery.min.js" />
-    <Content Include="Chart\assets\scripts\jquery.scrollTo.js" />
-    <Content Include="Chart\assets\scripts\jquery.sunlight.js" />
-    <Content Include="Chart\assets\scripts\prettify\Apache-License-2.0.txt" />
-    <Content Include="Chart\assets\scripts\prettify\jquery.min.js" />
-    <Content Include="Chart\assets\scripts\prettify\lang-css.js" />
-    <Content Include="Chart\assets\scripts\prettify\prettify.js" />
-    <Content Include="Chart\assets\scripts\sunlight-plugin.doclinks.js" />
-    <Content Include="Chart\assets\scripts\sunlight-plugin.linenumbers.js" />
-    <Content Include="Chart\assets\scripts\sunlight-plugin.menu.js" />
-    <Content Include="Chart\assets\scripts\sunlight.javascript.js" />
-    <Content Include="Chart\assets\scripts\sunlight.js" />
-    <Content Include="Chart\assets\scripts\sunlight.xml-min.js" />
-    <Content Include="Chart\assets\scripts\toc.js" />
-    <Content Include="Chart\assets\scripts\topnav.js" />
-    <Content Include="Chart\assets\scripts\URI.js" />
-    <Content Include="Chart\assets\scripts\vkbeautify.0.99.00.beta.js" />
-    <Content Include="Chart\js\fusioncharts.charts.js" />
-    <Content Include="Chart\js\fusioncharts.gantt.js" />
-    <Content Include="Chart\js\fusioncharts.js" />
-    <Content Include="Chart\js\fusioncharts.maps.js" />
-    <Content Include="Chart\js\fusioncharts.powercharts.js" />
-    <Content Include="Chart\js\fusioncharts.widgets.js" />
-    <Content Include="Chart\js\jquery-ui.min.js" />
-    <Content Include="Chart\js\maps\fusioncharts.usa.js" />
-    <Content Include="Chart\js\maps\fusioncharts.world.js" />
-    <Content Include="Chart\js\maps\readme.txt" />
-    <Content Include="Chart\js\themes\fusioncharts.theme.carbon.js" />
-    <Content Include="Chart\js\themes\fusioncharts.theme.fint.js" />
-    <Content Include="Chart\js\themes\fusioncharts.theme.ocean.js" />
-    <Content Include="Chart\js\themes\fusioncharts.theme.zune.js" />
     <Content Include="css\coda-slider.css" />
     <Content Include="css\Mycss.css" />
     <Content Include="css\templatemo_style.css" />
+    <Content Include="images\Dollar.jpg" />
+    <Content Include="Jqplot\jqplot.barRenderer.min.js" />
+    <Content Include="Jqplot\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Jqplot\jqplot.pointLabels.min.js" />
+    <Content Include="Jqplot\jquery-migrate-1.2.1.min.js" />
+    <Content Include="Jqplot\jquery.jqplot.min.css" />
+    <Content Include="Jqplot\jquery.jqplot.min.js" />
     <Content Include="js\MyChartJs.js" />
     <Content Include="MyScripts\script.js" />
+    <Content Include="script\IncomeChart.js" />
     <Content Include="Websites\Money.aspx" />
     <Content Include="images\facebook.png" />
     <Content Include="images\gallery\image_01.jpg" />
@@ -209,6 +159,8 @@
     <Content Include="Websites\Home.aspx" />
     <Content Include="Websites\MoneyTracker.aspx" />
     <Content Include="Websites\Registration.aspx" />
+    <Content Include="Websites\IncomeChart.aspx" />
+    <Content Include="Websites\UserExpense.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Websites\Money.aspx.cs">
@@ -259,6 +211,20 @@
     </Compile>
     <Compile Include="Websites\Registration.aspx.designer.cs">
       <DependentUpon>Registration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Websites\IncomeChart.aspx.cs">
+      <DependentUpon>IncomeChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Websites\IncomeChart.aspx.designer.cs">
+      <DependentUpon>IncomeChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Websites\UserExpense.aspx.cs">
+      <DependentUpon>UserExpense.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Websites\UserExpense.aspx.designer.cs">
+      <DependentUpon>UserExpense.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

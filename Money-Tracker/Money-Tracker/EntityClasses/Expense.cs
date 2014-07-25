@@ -12,6 +12,8 @@ namespace Money_Tracker.EntityClasses
         public int User_Id { get; set; }
         public decimal Expenses { get; set; }
         public DateTime Date { get; set; }
+        public string strDate { get { return this.Date.ToString("yyyy-MM-dd"); } }
+        public string Note { get; set; }
         public string DateString
         {
             get
@@ -36,15 +38,15 @@ namespace Money_Tracker.EntityClasses
             return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
         }
 
-        public List<Expense> GetExpense(int intUserID)
+        public List<Expense> GetExpense()
         {
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             Expense objExpense = null;
             List<Expense> lstExpense = new List<Expense>();
 
-            string strQuery = "SELECT [Expence],[Date] FROM [Expense] WHERE User_Id=@User_Id";
-            string[] strArrColNames = new string[] { "User_Id" };
-            object[] objArrColValue = new object[] { intUserID };
+            string strQuery = "SELECT [Expence],[Date] FROM [Expense]";
+            string[] strArrColNames = {};
+            object[] objArrColValue = {};
 
             DataTable dtTemp = new DataTable();
             dtTemp = objSqlConLib.SelectQuery(strQuery, strArrColNames, objArrColValue);
@@ -60,6 +62,26 @@ namespace Money_Tracker.EntityClasses
                 lstExpense.Add(objExpense);
             }
             return lstExpense;
+        }
+
+        public bool InsertExpense(object[] objExpense)
+        {
+            string[] strArrCol = { "User_Id", "Expence", "Date", "Category_Id", "Note" };
+            this.Date = DateTime.Now;
+            object[] objArrColValues = { objExpense[0], objExpense[1], this.Date, objExpense[2], objExpense[3] };
+            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
+            return objSqlConLib.ExecuteQuery(@"INSERT INTO [dbo].[Expense]
+                                                                   ([User_Id]
+                                                                   ,[Expence]
+                                                                   ,[Date]
+                                                                   ,[Category_Id]
+                                                                   ,[Note])
+                                                             VALUES
+                                                                   (@User_id
+                                                                   ,@Expence
+                                                                   ,@Date
+                                                                   ,@Category_Id
+                                                                   ,@Note)", strArrCol, objArrColValues);
         }
     }
 }

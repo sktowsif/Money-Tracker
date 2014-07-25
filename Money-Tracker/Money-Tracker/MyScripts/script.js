@@ -6,6 +6,12 @@
         insertIncome();
 
     });
+
+    $("#btnExpense").click(function () {
+
+        insertExpense();
+
+    });
 });
 function ajaxCaller(url, dataToSend, SuccessCallBack, FailureCallBack) {
     $.ajax({
@@ -41,6 +47,16 @@ function SuccessCallExp(data) {
 
 
 function insertIncome() {
-    var Income = JSON.stringify({ "objIncome": [1,$("#txtIncAmount").val(), $("#ddlIncCategory option:selected").text()] });
-    ajaxCaller("WebForm1.aspx/InsertUser", Income, SuccessCall, FailureCall);
+    var Income = JSON.stringify({ "objIncome": [1, $("#txtIncAmount").val(), $("#ddlIncCategory option:selected").val(), $("#txtIncNote").val()] });
+    ajaxCaller("MoneyTracker.aspx/InsertIncome", Income, SuccessCallInc, FailureCall);
+}
+
+function insertExpense() {
+    var Expense = JSON.stringify({ "objExpense": [1, $("#txtExpAmount").val(), $("#ddlExpCategory option:selected").val(), $("#txtExpNote").val()] });
+    ajaxCaller("MoneyTracker.aspx/InsertExpense", Expense, SuccessCallInc, FailureCall);
+}
+
+function SuccessCallInc() {
+    alert("Ok");
+    $("#IncomeExp")[0].reset();
 }

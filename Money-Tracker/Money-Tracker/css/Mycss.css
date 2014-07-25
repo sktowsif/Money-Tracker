@@ -7,3 +7,20 @@
     float:left;
     padding-right:10px;
 }
+.star {
+    color:red;
+}
+
+#imgDollar{
+    height:220px;
+    width:275px;
+    border-radius:25px;
+}
+#contDiv {
+    float:left;
+    width:50%;
+    
+}
+#divImg {
+    float:left;
+}
