@@ -27,13 +27,13 @@ namespace Money_Tracker.EntityClasses
             else
                 return dtDate.AddMonths(1);
         }
-        public void GetAllWeeks(DateTime dtPresentDate, string strTimeSpan,string strTableName)
+        public void GetAllWeeks(int intId,DateTime dtPresentDate, string strTimeSpan,string strTableName)
         {
             DateTime dtDate;
             string[] strColValuesExpense = { };
             object[] objArrColValuesExpense = { };
             SqlConLib objSqlConLibMaxDate = new SqlConLib(Properties.Settings.Default.ConnectionString);
-            DataTable dtTableMaxDate = objSqlConLibMaxDate.SelectQuery(@"select date,Balance from Balance where date=(select max(date) from "+strTableName+") ", strColValuesExpense, objArrColValuesExpense);
+            DataTable dtTableMaxDate = objSqlConLibMaxDate.SelectQuery(@"select date,Balance from Balance where date = (select max(date) AND User_Id=@UserId from "+strTableName+") ", strColValuesExpense, objArrColValuesExpense);
             if (dtTableMaxDate.Rows.Count != 0)
             {
                 dtDate = (DateTime)dtTableMaxDate.Rows[0][0];

@@ -1,15 +1,19 @@
 ﻿$(document).ready(function () {
+    var userID = $.session.get('userID');
+    if (typeof userID =='undefined')
+    {
+        window.location.replace("Home.aspx");
+    }
     ajaxCaller("MoneyTracker.aspx/GetAllIncome", "{}", SuccessCall, FailureCall);
     ajaxCaller("MoneyTracker.aspx/GetAllExpense", "{}", SuccessCallExp, FailureCall);
     $("#btnIncome").click(function () {
-
-        insertIncome();
+        var Text=$("#txtIncNote).val()")
+        insertIncome(userID);
 
     });
 
     $("#btnExpense").click(function () {
-
-        insertExpense();
+        insertExpense(userID);
 
     });
 });
@@ -46,14 +50,14 @@ function SuccessCallExp(data) {
 }
 
 
-function insertIncome() {
-    var Income = JSON.stringify({ "objIncome": [1, $("#txtIncAmount").val(), $("#ddlIncCategory option:selected").val(), $("#txtIncNote").val()] });
+function insertIncome(userID) {
+    var Income = JSON.stringify({ "objIncome": [userID, $("#txtIncAmount").val(), $("#txtExpAmount").val(), $("#ddlIncCategory option:selected").val(),$("#txtIncNote").val()] });
     ajaxCaller("MoneyTracker.aspx/InsertIncome", Income, SuccessCallInc, FailureCall);
 }
 
-function insertExpense() {
-    var Expense = JSON.stringify({ "objExpense": [1, $("#txtExpAmount").val(), $("#ddlExpCategory option:selected").val(), $("#txtExpNote").val()] });
-    ajaxCaller("MoneyTracker.aspx/InsertExpense", Expense, SuccessCallInc, FailureCall);
+function insertExpense(userID) {
+    var Expense = JSON.stringify({ "objIncome": [userID, $("#txtIncAmount").val(), $("#txtExpAmount").val(), $("#ddlExpCategory option:selected").val(), $("#txtExpNote").val()] });
+    ajaxCaller("MoneyTracker.aspx/InsertIncome", Expense, SuccessCallInc, FailureCall);
 }
 
 function SuccessCallInc() {

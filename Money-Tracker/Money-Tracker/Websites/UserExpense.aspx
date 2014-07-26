@@ -12,11 +12,23 @@
     <script src="../Jqplot/jqplot.barRenderer.min.js"></script>
     <script src="../Jqplot/jqplot.categoryAxisRenderer.min.js"></script>
     <script src="../Jqplot/jqplot.pointLabels.min.js"></script>
-    
-    
+    <script src="../script/jquery.session.min.js"></script>
+    <link href="../css/chartChange.css" rel="stylesheet" />
     <script src="../js/MyChartJs.js"></script>
 </head>
 <body>
+    <div>
+        <select id="sltMonth">
+        <option value="-1">Select</option>
+
+    </select>
+        </div>
+    <div>
+        <select id="sltWeek">
+        <option value="-1">Select</option>
+
+    </select>
+        </div>
   <div id="Inc">
       </div>
     <div id="Exp">

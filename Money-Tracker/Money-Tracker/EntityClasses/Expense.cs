@@ -38,7 +38,7 @@ namespace Money_Tracker.EntityClasses
             return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
         }
 
-        public List<Expense> GetExpense()
+        public List<Expense> GetExpense(int Id)
         {
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             Expense objExpense = null;
@@ -67,13 +67,14 @@ namespace Money_Tracker.EntityClasses
 
         public bool InsertExpense(object[] objExpense)
         {
-            string[] strArrCol = { "User_Id", "Expence", "Date", "Category_Id", "Note" };
+            string[] strArrCol = { "User_Id", "Income","Expense", "Date", "Category_Id", "Note" };
             this.Date = DateTime.Now;
             object[] objArrColValues = { objExpense[0], objExpense[1], this.Date, objExpense[2], objExpense[3] };
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
-            return objSqlConLib.ExecuteQuery(@"INSERT INTO [dbo].[Expense]
+            return objSqlConLib.ExecuteQuery(@"INSERT INTO [dbo].[IncomeExpense]
                                                                    ([User_Id]
-                                                                   ,[Expence]
+                                                                   ,[Income]
+                                                                   ,[Expense]
                                                                    ,[Date]
                                                                    ,[Category_Id]
                                                                    ,[Note])
