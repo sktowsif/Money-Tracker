@@ -73,11 +73,11 @@ namespace Money_Tracker.EntityClasses
             return int.MinValue;
         }
 
-        public bool IsAlreadyRegistered(string strEmail)
+        public bool IsAlreadyRegistered(object[] objUserData)
         {
             string strQuery = "SELECT [Id] FROM [User] WHERE Email=@Email";
             string[] strArrColNames = new string[] { "Email"};
-            object[] objArrColValue = new object[] { strEmail };
+            object[] objArrColValue = new object[] { objUserData[0] };
 
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             DataTable dtTemp = new DataTable();
@@ -87,6 +87,15 @@ namespace Money_Tracker.EntityClasses
             if (dtTemp.Rows.Count > 0)
                 return true;
             return false;
+        }
+
+        public bool ResetOperation(Guid id,DateTime dt,string strEmail)
+        {
+            string strQuery = "UPDATE [User] SET [GuId]=@Guid,[ResetTime]=@ResetTime WHERE [Email]=@Email";
+            string[] strArrColNames = new string[] { "GuId","ResetTime","Email"};
+            object[] objArrColValue = new object[] { id,dt,strEmail };
+            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
+            return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
         }
 
     }

@@ -15,6 +15,7 @@ namespace Money_Tracker.Websites
         public string DaysCal { get; set; }
         public string WeeksCal { get; set; }
         public string MonthsCal { get; set; }
+        
         [WebMethod]
         public static List<Income> GetIncome(object Id)
         {
@@ -46,6 +47,7 @@ namespace Money_Tracker.Websites
             else nextFirst = new DateTime(first.Year, first.Month + 1, 1);
             last = nextFirst.AddDays(-1);
         }
+
         [WebMethod]
         public static List<Income> GetSelectedMonth(int intId,int intYear, int intMonth)
         {
@@ -57,6 +59,7 @@ namespace Money_Tracker.Websites
             Income objIncome = new Income();
             return objIncome.GetMonthlyIncomeData(intId, dtFirst, dtLast);
         }
+
         [WebMethod]
         public static List<Months> GetMonths()
         {

@@ -5,7 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Reset password</title>
+    <script src="../script/jquery-1.11.1.js"></script>
+    <script src="../script/jquery.noty.packaged.min.js"></script>
     <link href="../css/styleResetPassword.css" rel="stylesheet" />
+    <script src="../script/scriptReset.js"></script>
 </head>
 
 <body>
@@ -24,9 +27,13 @@
             <div>
                 <input type="button" id="btn_search" value="Search" class="btnColor"/>
             </div>
-            <div>
-                <input type="button" id="btn_send" value="Send" class="btnColor"/>
+            <div id="divBack">
+                <a href="Home.aspx"><img src="../customImage/back.png"/></a>
             </div>
+
+            <%--<div>
+                <input type="button" id="btn_send" value="Send" class="btnColor"/>
+            </div>--%>
         </div>
     </form>
 </body>

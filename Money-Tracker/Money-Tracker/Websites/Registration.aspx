@@ -51,7 +51,7 @@
                 <input type="button" value="Sign up" id="btn_register" class="btnColor alignControls" />
             </div>
             <div id="divBack">
-                <a href="Home.aspx"><img src="../customImage/backspace-64.png"/></a>
+                <a href="Home.aspx"><img src="../customImage/back.png"/></a>
             </div>
         </div>
     </form>

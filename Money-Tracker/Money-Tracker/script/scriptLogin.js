@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
    $('#btn_login').click(function () {
-        CheckLogin();
+       validateLoginPage($('#txt_email').val(),$('#txt_pwd').val())
     });
 
     $('#btn_newregister').click(function () {
@@ -26,7 +26,6 @@ function ajaxCall(url, dataToSend, SuccessCallBack, ErrorCallBack) {
 function CheckLogin() {
     var email = $('#txt_email').val();
     var pwd = $('#txt_pwd').val();
-    debugger;
     var userLoginDetails = JSON.stringify({'objCred':[email,pwd]});
     ajaxCall('Home.aspx/CheckLoginDetails', userLoginDetails, SuccessValidUser, ErrorCallBack);
 }
@@ -39,11 +38,7 @@ function SuccessValidUser(data) {
         window.location.replace('MoneyTracker.aspx');
     }
     else
-        var n = noty({
-            text: 'You are not a registered user!',
-            type: 'information',
-            theme: 'defaultTheme'
-        });
+        ShowMessage('You are not a registered user!','information')
 }
 
 // Called whr=en error is encountered by ajax call
@@ -52,7 +47,45 @@ function ErrorCallBack(xhr,msg,exception) {
 }
 
 // To generate noty messages
-function ShowMessage(type) {
+function ShowMessage(msg, type) {
+    var n = noty({
+        text: msg,
+        type: type,
+        timeout: 3000,
+    })
 }
+
+// validation for email and password
+function validateLoginPage(email,password) {
+    var regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var email = $('#txt_email').val();
+    var pwd = $('#txt_pwd').val();
+    var isValid = true;
+
+    if (email.length == 0 && pwd.length == 0) {
+        ShowMessage('Please enter your email and password', 'information');
+        return;
+    }
+
+    if (email.length != 0 || pwd.length != 0) {
+        if (!regex.test(email)) {
+            ShowMessage('Please enter a valid email', 'error');
+            $('#txt_email').focus();
+            isValid = false;
+        }
+        var pwdLength = password.length;
+        if (pwdLength < 6) {
+            ShowMessage('Password should be more than 6 charcters', 'error');
+            $('#txt_pwd').focus();
+            isValid = false;
+        }
+    }
+
+    if (isValid)
+        CheckLogin();
+
+}
+
+
 
 
