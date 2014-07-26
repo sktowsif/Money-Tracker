@@ -12,7 +12,6 @@
     <script src="../script/scriptLogin.js"></script>
 </head>
 <body>
-    
 
     <form id="formlogin">
         <div id="divLogin">
@@ -35,10 +34,11 @@
                     <input type="button" id="btn_login" value="Login" class="btnColor" />
                 </div>
                 <div>
-                    <input type="button" id="btn_newregister" value="Sign up" class="btnColor"/>
+                    <input type="button" id="btn_newregister" value="Sign up" class="btnColor" />
                 </div>
             </div>
         </div>
     </form>
+
 </body>
 </html>

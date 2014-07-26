@@ -71,6 +71,7 @@ namespace Money_Tracker.EntityClasses
             }
             return lstIncome;
         }
+
         public bool InsertIncome(object[] objIncome)
         {
             string[] strArrCol = { "User_Id","Income","Date","Category_Id","Note" };
@@ -89,6 +90,41 @@ namespace Money_Tracker.EntityClasses
                                                                    ,@Date
                                                                    ,@Category_Id
                                                                    ,@Note)", strArrCol, objArrColValues);
+        }
+
+        public List<CalendarEvents> GetIncomeForCalendar()
+        {
+            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
+            CalendarEvents objCalEvents = null;
+            Income obIncome = new Income();
+            List<CalendarEvents> lstCalEvents = new List<CalendarEvents>();
+
+            string strQuery = "SELECT [Income],[Date],[Note] FROM [Income]";
+            string[] strArrColNames = { };
+            object[] objArrColValue = { };
+
+            DataTable dtTemp = new DataTable();
+            dtTemp = objSqlConLib.SelectQuery(strQuery, strArrColNames, objArrColValue);
+
+            decimal decTemp;
+            float flTemp;
+            for (int i = 0; i < dtTemp.Rows.Count; i++)
+            {
+                objCalEvents = new CalendarEvents();
+
+                decimal.TryParse(dtTemp.Rows[i]["Income"].ToString(), out decTemp);
+                flTemp = (float)decTemp;
+                string strNote = dtTemp.Rows[i]["Note"].ToString() != null ? dtTemp.Rows[i]["Note"].ToString() : string.Empty;
+
+                objCalEvents.title = strNote + "  +" + flTemp.ToString();
+                DateTime dateTemp = Convert.ToDateTime(dtTemp.Rows[i]["Date"].ToString());
+                obIncome.Date = dateTemp;
+                objCalEvents.start = obIncome.strDate;
+                objCalEvents.backgroundColor = "#89C35C";
+                objCalEvents.borderColor = "#89C35C";
+                lstCalEvents.Add(objCalEvents);
+            }
+            return lstCalEvents;
         }
     }
 }

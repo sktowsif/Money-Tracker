@@ -1,11 +1,11 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
 
-    $('#btn_login').click(function () {
+   $('#btn_login').click(function () {
         CheckLogin();
     });
 
     $('#btn_newregister').click(function () {
-        window.location.href('Registration.aspx');
+        window.location.replace('Registration.aspx');
     });
 })
 
@@ -54,4 +54,5 @@ function ErrorCallBack(xhr,msg,exception) {
 // To generate noty messages
 function ShowMessage(type) {
 }
+
 

@@ -22,6 +22,9 @@ namespace Money_Tracker
             //this.DaysCal = "Months";
             //obj.GetAllWeeks(dtDate,this.DaysCal,"Balance");
             //Default.GetAllIncome();
+
+            
+
         }
         
     }

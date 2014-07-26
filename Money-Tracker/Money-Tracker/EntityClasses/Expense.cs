@@ -24,7 +24,7 @@ namespace Money_Tracker.EntityClasses
         public int Category_Id { get; set; }
 
         string[] strArrColumn = Properties.Settings.Default.Expense_Cols.Split('|');
-        
+
 
         public bool Insert()
         {
@@ -44,9 +44,9 @@ namespace Money_Tracker.EntityClasses
             Expense objExpense = null;
             List<Expense> lstExpense = new List<Expense>();
 
-            string strQuery = "SELECT [Expence],[Date] FROM [Expense]";
-            string[] strArrColNames = {};
-            object[] objArrColValue = {};
+            string strQuery = "SELECT [Expence],[Date],[Note] FROM [Expense]";
+            string[] strArrColNames = { };
+            object[] objArrColValue = { };
 
             DataTable dtTemp = new DataTable();
             dtTemp = objSqlConLib.SelectQuery(strQuery, strArrColNames, objArrColValue);
@@ -57,6 +57,7 @@ namespace Money_Tracker.EntityClasses
                 objExpense = new Expense();
                 decimal.TryParse(dtTemp.Rows[i]["Expence"].ToString(), out decTemp);
                 objExpense.Expenses = decTemp;
+                objExpense.Note = dtTemp.Rows[i]["Note"].ToString() != null ? dtTemp.Rows[i]["Note"].ToString() : string.Empty;
                 DateTime dateTemp = Convert.ToDateTime(dtTemp.Rows[i]["Date"].ToString());
                 objExpense.Date = dateTemp;
                 lstExpense.Add(objExpense);
@@ -82,6 +83,41 @@ namespace Money_Tracker.EntityClasses
                                                                    ,@Date
                                                                    ,@Category_Id
                                                                    ,@Note)", strArrCol, objArrColValues);
+        }
+
+        public List<CalendarEvents> GetExpenseForCalendar()
+        {
+            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
+            CalendarEvents objCalEvents = null;
+            Expense objExpense = new Expense();
+            List<CalendarEvents> lstCalEvents = new List<CalendarEvents>();
+
+            string strQuery = "SELECT [Expence],[Date],[Note] FROM [Expense]";
+            string[] strArrColNames = { };
+            object[] objArrColValue = { };
+
+            DataTable dtTemp = new DataTable();
+            dtTemp = objSqlConLib.SelectQuery(strQuery, strArrColNames, objArrColValue);
+
+            decimal decTemp;
+            float flTemp;
+            for (int i = 0; i < dtTemp.Rows.Count; i++)
+            {
+                objCalEvents = new CalendarEvents();
+
+                decimal.TryParse(dtTemp.Rows[i]["Expence"].ToString(), out decTemp);
+                flTemp = (float)decTemp;
+                string strNote = dtTemp.Rows[i]["Note"].ToString() != null ? dtTemp.Rows[i]["Note"].ToString() : string.Empty;
+
+                objCalEvents.title = strNote + "  -" + flTemp.ToString();
+                DateTime dateTemp = Convert.ToDateTime(dtTemp.Rows[i]["Date"].ToString());
+                objExpense.Date = dateTemp;
+                objCalEvents.start = objExpense.strDate;
+                objCalEvents.backgroundColor = "#F62817";
+                objCalEvents.borderColor = "#F62817";
+                lstCalEvents.Add(objCalEvents);
+            }
+            return lstCalEvents;
         }
     }
 }

@@ -7,6 +7,7 @@
     <title>Sign up</title>
     <link href="../css/styleRegister.css" rel="stylesheet" />
     <script src="../script/jquery-1.11.1.js"></script>
+    <script src="../script/jquery.noty.packaged.min.js"></script>
     <script src="../script/scriptRegister.js"></script>
 </head>
 <body>
@@ -48,6 +49,9 @@
             </div>
             <div>
                 <input type="button" value="Sign up" id="btn_register" class="btnColor alignControls" />
+            </div>
+            <div id="divBack">
+                <a href="Home.aspx"><img src="../customImage/backspace-64.png"/></a>
             </div>
         </div>
     </form>

@@ -75,6 +75,10 @@ body {
     margin:auto;
 }
 
+#formlogin {
+    z-index:3;
+}
+
 #formlogin input {
     padding: 15px;
 	border: 1px solid #ccc;
@@ -116,4 +120,14 @@ body {
     height:470px;
     padding-top:45px;
 	margin: 10% auto;
+}
+
+.fadein {
+    position:relative;
+}
+
+.fadein img {
+    position:absolute;
+    left:0;
+    right:0;
 }

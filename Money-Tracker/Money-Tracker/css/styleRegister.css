@@ -111,7 +111,7 @@ body {
 }
 
 .btnColor {
-    margin-top:50px;
+    margin-top:20px;
     background-color:#E78A61;
     color:white;
 }
@@ -123,4 +123,8 @@ body {
 
 .radioStyle {
     margin-bottom:10px;
+}
+
+#divBack {
+    text-align:center;
 }

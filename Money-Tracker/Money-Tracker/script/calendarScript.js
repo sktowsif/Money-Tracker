@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     
 
-    ajaxCall('Calendar.aspx/GetExpense', "{}", DataForCalendar, ErrorCallBack);
+    ajaxCall('Helper.asmx/GetIncomeExpenseData', "{}", DataForCalendar, ErrorCallBack);
 });
 
 // Generic Ajax call function
@@ -26,23 +26,15 @@ function ErrorCallBack(xhr,msg,exception) {
 function DataForCalendar(data) {
     
     var dataTemp = data.d;
-    var calendarArray=new Array();
-    for(var i=0;i<dataTemp.length;i++) {
-        var objEvents = {
-            title: dataTemp[i]['Expenses'],
-            start: dataTemp[i]['DateString']
-        }
-        calendarArray.push(objEvents);
-    }
+    
     $('#calendar').fullCalendar({
         header: {
             left: 'prev,next today',
             center: 'title',
             right: 'month,basicWeek,basicDay'
         },
-        aspectRatio:6,
         defaultDate: new Date(),
         editable: true,
-        events: calendarArray,
+        events: dataTemp,
     });
 }

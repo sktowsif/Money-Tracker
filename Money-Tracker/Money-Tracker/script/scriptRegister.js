@@ -60,5 +60,9 @@ function GetUserDetails() {
 }
 
 function SuccessUserInsert() {
-    alert("User Inserted");
+    var n = noty({
+        text: 'You are successfully signed up go back to login page!',
+        type: 'information',
+        theme: 'defaultTheme'
+    });
 }
