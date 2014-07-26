@@ -38,15 +38,15 @@ namespace Money_Tracker.EntityClasses
             return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
         }
 
-        public List<Expense> GetExpense()
+        public List<Expense> GetExpense(int Id)
         {
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             Expense objExpense = null;
             List<Expense> lstExpense = new List<Expense>();
 
-            string strQuery = "SELECT [Expence],[Date] FROM [Expense]";
-            string[] strArrColNames = {};
-            object[] objArrColValue = {};
+            string strQuery = "SELECT [Expence],[Date] FROM [Expense] where user_id=@user_id";
+            string[] strArrColNames = {"user_id"};
+            object[] objArrColValue = {Id};
 
             DataTable dtTemp = new DataTable();
             dtTemp = objSqlConLib.SelectQuery(strQuery, strArrColNames, objArrColValue);
@@ -66,13 +66,14 @@ namespace Money_Tracker.EntityClasses
 
         public bool InsertExpense(object[] objExpense)
         {
-            string[] strArrCol = { "User_Id", "Expence", "Date", "Category_Id", "Note" };
+            string[] strArrCol = { "User_Id", "Income","Expense", "Date", "Category_Id", "Note" };
             this.Date = DateTime.Now;
             object[] objArrColValues = { objExpense[0], objExpense[1], this.Date, objExpense[2], objExpense[3] };
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
-            return objSqlConLib.ExecuteQuery(@"INSERT INTO [dbo].[Expense]
+            return objSqlConLib.ExecuteQuery(@"INSERT INTO [dbo].[IncomeExpense]
                                                                    ([User_Id]
-                                                                   ,[Expence]
+                                                                   ,[Income]
+                                                                   ,[Expense]
                                                                    ,[Date]
                                                                    ,[Category_Id]
                                                                    ,[Note])

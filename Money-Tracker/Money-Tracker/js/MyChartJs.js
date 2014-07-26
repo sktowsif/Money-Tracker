@@ -1,8 +1,32 @@
 ﻿$(document).ready(function () {
-    ajaxCaller("UserExpense.aspx/GetIncome", "{}", SuccessCallInc, FailureCall);
-    ajaxCaller("UserExpense.aspx/GetExpense","{}",SuccessCallExp, FailureCall);
-});
+    var userID = $.session.get('userID');
+    if (typeof userID == 'undefined') {
+        window.location.replace("Home.aspx");
+    }
+   
+    ajaxCaller("UserExpense.aspx/GetIncome", "{Id:"+userID+"}", SuccessCallInc, FailureCall);
+    //ajaxCaller("UserExpense.aspx/GetExpense", "{Id:" + userID + "}", SuccessCallExp, FailureCall);
+    ajaxCaller("UserExpense.aspx/GetMonths", {}, SuccessMonth, FailureCall);
 
+    $("#sltMonth").change(function () {
+        ajaxCaller("UserExpense.aspx/GetSelectedMonth", "{intId:"+userID+",intYear:" +2014+",intMonth:"+ $("#sltMonth option:selected").val() + "}", SuccessCallInc, FailureCall);
+    });
+});
+function Success(data) {
+    var value = data;
+    ChartMonth(value);
+}
+function SuccessMonth(data) {
+    var Type = data.d;
+    BindDropDown("#sltMonth", Type, "MonthName", "Id");
+}
+function BindDropDown(selector, data, dataMember, valueMember) {
+    $(selector).empty();
+    for (var obj in data) {
+        $(selector).append("<option value=" + data[obj][valueMember] + ">" + data[obj][dataMember] + "</option>")
+    }
+
+}
 function ajaxCaller(url, dataToSend, SuccessCall, FailureCallBack) {
     $.ajax({
         url: url,
@@ -17,12 +41,15 @@ function ajaxCaller(url, dataToSend, SuccessCall, FailureCallBack) {
 }
 
 function Chart(data) {
+    $("#Inc").empty();
     var dataTemp = data.d;
     var IncomeArray = new Array();
     var DateArray = new Array();
+    var ExpArray = new Array();
     for (var i = 0; i < dataTemp.length; i++) {
         IncomeArray.push(dataTemp[i]["Incomes"]);
         DateArray.push(dataTemp[i]["strDate"]);
+        ExpArray.push(dataTemp[i]["Expense"]);
     }
     //var s2 = [460, -210, 690, 820];
     // var s3 = [-260, -440, 320, 200];
@@ -30,11 +57,15 @@ function Chart(data) {
     // Ticks should match up one for each y value (category) in the series.
     var ticks = DateArray;
 
-    var plot1 = $.jqplot('Inc', [IncomeArray], {
+    var plot1 = $.jqplot('Inc', [IncomeArray,ExpArray], {
         // The "seriesDefaults" option is an options object that will
         // be applied to all series in the chart.
+        
         seriesDefaults: {
-            renderer: $.jqplot.BarRenderer,
+            renderer: $.jqplot.BarRenderer(function () {
+                this.barPadding = 3
+                
+            }),
             rendererOptions: { fillToZero: true }
         },
         // Custom labels for the series are specified with the "label"
@@ -42,6 +73,7 @@ function Chart(data) {
         // is specified for each series.
         series: [
             { label: 'Income' },
+            {label: 'Expense'},
             { label: 'strDate' },
             //{ label: 'Airfare' }
         ],
@@ -62,10 +94,10 @@ function Chart(data) {
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             yaxis: {
-                pad: 1.05,
+                pad: 6,
                 tickOptions: { formatString: '$%d' }
             }
-        }
+        },
     });
 }
 function SuccessCallInc(data) {
@@ -133,3 +165,4 @@ function ChartExp(data) {
         }
     });
 }
+

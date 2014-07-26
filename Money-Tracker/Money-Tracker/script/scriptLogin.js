@@ -5,7 +5,7 @@
     });
 
     $('#btn_newregister').click(function () {
-        window.location.href('Registration.aspx');
+        window.location.replace("Registration.aspx");
     });
 })
 

@@ -72,7 +72,7 @@
                         <div class="panel" id="home">
                             <h1>Welcome</h1>
                             <div id="contDiv">
-                                <a href="UserExpense.aspx">Click Here For Details</a>
+                                <a href="UserExpense.aspx">Click Here For Income and Expense Graphs</a>
                                 &nbsp;
                             </div>
                             <div id="divImg">
