@@ -65,6 +65,50 @@ namespace Money_Tracker.Websites
                 client.Send(mail);
             }
         }
+public static void FirstAndLastDayOfMonth(DateTime date, out DateTime first, out DateTime last)
+        {
+            first = new DateTime(date.Year, date.Month, 1);
+            DateTime nextFirst;
+            if (first.Month == 12) nextFirst = new DateTime(first.Year + 1, 1, 1);
+            else nextFirst = new DateTime(first.Year, first.Month + 1, 1);
+            last = nextFirst.AddDays(-1);
+        }
+        [WebMethod]
+        public List<Income> GetWeekData(int intId, int intYear, int intMonth, int intWeekNumber)
+        {
+            string strDate = "01" + "-" + intMonth + "-" + intYear;
+            DateTime dtDate = Convert.ToDateTime(strDate);
+            DateTime dtFirst;
+            DateTime dtLast;
+            FirstAndLastDayOfMonth(dtDate, out dtFirst, out dtLast);
+            int intWeekCount = 7 * intWeekNumber;
+            DateTime dtAddDays = dtFirst.AddDays(intWeekCount - 1);
+            dtLast = dtAddDays.AddDays(-7);
+            Income objIncome = new Income();
+            return objIncome.GetMonthlyIncomeData(intId, dtLast, dtAddDays);
+        }
+        [WebMethod]
+        public List<Weeks> GetWeeks()
+        {
+            Weeks objMonths = new Weeks();
+            return objMonths.GetWeeks();
+
+        }
+        [WebMethod]
+        public List<Year> GetYears()
+        {
+            Year objYear = new Year();
+            return objYear.GetYears();
+
+        }
+        [WebMethod]
+        public List<Year> GetYearData(int intYear)
+        {
+            Year objYear = new Year();
+            return objYear.GetYears();
+
+        }
+    }
 
     }
 }

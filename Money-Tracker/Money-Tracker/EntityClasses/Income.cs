@@ -18,9 +18,9 @@ namespace Money_Tracker.EntityClasses
         public decimal Incomes { get; set; }
         public string Note { get; set; }
         public int Id { get; set; }
-
+        public string Day { get; set; }
         public string Name { get; set; }
-
+        public string MonthName { get; set; }
         public string Type { get; set; }
 
         string[] strArrColumn = Properties.Settings.Default.Income_Cols.Split('|');
@@ -29,7 +29,7 @@ namespace Money_Tracker.EntityClasses
         {
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             DateTime Today = DateTime.Today;
-            
+
 
             string strQuery = Properties.Settings.Default.Income_INSERT;
             string[] strArrColNames = new string[] { strArrColumn[0], strArrColumn[1], strArrColumn[2], strArrColumn[3] };
@@ -57,8 +57,8 @@ namespace Money_Tracker.EntityClasses
 
         public List<Income> GetAllIncome(int Id)
         {
-            string[] strColValues = {  "User_Id"};
-            object[] objArrColValues = {Id};
+            string[] strColValues = { "User_Id" };
+            object[] objArrColValues = { Id };
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             DataTable dtTable = objSqlConLib.SelectQuery("Select Income,Date,Expense from IncomeExpense Where User_id=@User_id", strColValues, objArrColValues);
             List<Income> lstIncome = new List<Income>();
@@ -67,6 +67,7 @@ namespace Money_Tracker.EntityClasses
                 Income objIncome = new Income();
                 objIncome.Incomes = TypeTranslation.GetDecimal(dtTable.Rows[i]["Income"].ToString());
                 objIncome.Date = (DateTime)dtTable.Rows[i]["Date"];
+                objIncome.Day = dtTable.Rows[i]["Date"].ToString().Substring(0, 2);
                 objIncome.Expense = TypeTranslation.GetDecimal(dtTable.Rows[i]["Expense"].ToString());
                 lstIncome.Add(objIncome);
             }
@@ -75,9 +76,9 @@ namespace Money_Tracker.EntityClasses
 
         public bool InsertIncome(object[] objIncome)
         {
-            string[] strArrCol = { "User_Id","Income","Expense","Date","Category_Id","Note" };
+            string[] strArrCol = { "User_Id", "Income", "Expense", "Date", "Category_Id", "Note" };
             this.Date = DateTime.Now;
-            object[] objArrColValues = { objIncome[0], objIncome[1],objIncome[2], this.Date, objIncome[3],objIncome[4]};
+            object[] objArrColValues = { objIncome[0], objIncome[1], objIncome[2], this.Date, objIncome[3], objIncome[4] };
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             return objSqlConLib.ExecuteQuery(@"INSERT INTO [dbo].[IncomeExpense]
                                                                    ([User_Id]
@@ -129,7 +130,7 @@ namespace Money_Tracker.EntityClasses
             }
             return lstCalEvents;
         }
-public List<Income> GetMonthlyIncomeData(int intId,DateTime dtFDate,DateTime dtLDate)
+        public List<Income> GetMonthlyIncomeData(int intId, DateTime dtFDate, DateTime dtLDate)
         {
             object[] objArrColValuesExpenseWeek = { dtFDate, dtLDate };
             string[] strColValuesExpenseWeek = { "dtFDate", "dtLDate" };
@@ -141,7 +142,26 @@ public List<Income> GetMonthlyIncomeData(int intId,DateTime dtFDate,DateTime dtL
                 Income objIncome = new Income();
                 objIncome.Incomes = TypeTranslation.GetDecimal(dtTableWeekExpense.Rows[i]["Income"].ToString());
                 objIncome.Date = (DateTime)dtTableWeekExpense.Rows[i]["Date"];
+                objIncome.Day = dtTableWeekExpense.Rows[i]["Date"].ToString().Substring(0, 2);
                 objIncome.Expense = TypeTranslation.GetDecimal(dtTableWeekExpense.Rows[i]["Expense"].ToString());
+                lstIncome.Add(objIncome);
+            }
+            return lstIncome;
+        }
+        public List<Income> GetYearsData()
+        {
+            string[] strColValues = { };
+            object[] objArrColValues = { };
+            SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
+            DataTable dtTable = objSqlConLib.SelectQuery(@"select sum(Income),sum(Expense),DATENAME(month,date) from IncomeExpense where date between
+                                                            '2014-01-01' and '2014-12-31' group by Datename(month,date)", strColValues, objArrColValues);
+            List<Income> lstIncome = new List<Income>();
+            for (int i = 0; i < dtTable.Rows.Count; i++)
+            {
+                Income objIncome = new Income();
+                objIncome.Incomes= TypeTranslation.GetDecimal(dtTable.Rows[i]["Income"].ToString());
+                objIncome.Expense = TypeTranslation.GetDecimal(dtTable.Rows[i]["Expense"].ToString());
+                objIncome.MonthName = dtTable.Rows[i]["Expense"].ToString();
                 lstIncome.Add(objIncome);
             }
             return lstIncome;

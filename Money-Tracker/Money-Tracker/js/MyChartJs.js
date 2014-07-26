@@ -3,15 +3,36 @@
     if (typeof userID == 'undefined') {
         window.location.replace("Home.aspx");
     }
-   
-    ajaxCaller("UserExpense.aspx/GetIncome", "{Id:"+userID+"}", SuccessCallInc, FailureCall);
+    ajaxCaller("Helper.asmx/GetYears", "{}", SuccessCallYears, FailureCall);
+    $("#sltYear").change(function () {
+        ajaxCaller("Helper.asmx/GetYearData", "{intYear:"+$("#sltYear option:selected").text()+"}", SuccessCallY, FailureCall);
+        ajaxCaller("UserExpense.aspx/GetMonths", {}, SuccessMonth, FailureCall);
+    });
+    ajaxCaller("UserExpense.aspx/GetIncome", "{Id:" + userID + "}", SuccessCallInc, FailureCall);
     //ajaxCaller("UserExpense.aspx/GetExpense", "{Id:" + userID + "}", SuccessCallExp, FailureCall);
-    ajaxCaller("UserExpense.aspx/GetMonths", {}, SuccessMonth, FailureCall);
+   
 
     $("#sltMonth").change(function () {
-        ajaxCaller("UserExpense.aspx/GetSelectedMonth", "{intId:"+userID+",intYear:" +2014+",intMonth:"+ $("#sltMonth option:selected").val() + "}", SuccessCallInc, FailureCall);
+        ajaxCaller("UserExpense.aspx/GetSelectedMonth", "{intId:" + userID + ",intYear:" +$("#sltYear option:selected").text() + ",intMonth:" + $("#sltMonth option:selected").val() + "}", SuccessCallInc, FailureCall);
+        ajaxCaller("Helper.asmx/GetWeeks", "{}", SuccessCallWeeks, FailureCall);
+    });
+    $("#sltWeek").change(function () {
+        ajaxCaller("Helper.asmx/GetWeekData", "{intId:" + userID + ",intYear:" + $("#sltYear option:selected").text() + ",intMonth:" + $("#sltMonth option:selected").val() + ",intWeekNumber:" + $("#sltWeek option:selected").val() + "}", SuccessCallInc, FailureCall);
     });
 });
+function SuccessCallWeeks(data){
+    var Type = data.d;
+    BindDropDown("#sltWeek", Type, "Week", "Id");
+}
+function SuccessCallYears(data) {
+    var Type = data.d;
+    BindDropDown("#sltYear", Type, "Years", "Id");
+}
+function SuccessCallY(){
+    var value = data;
+    var day = "MonthName";
+    Chart(value, day);
+}
 function Success(data) {
     var value = data;
     ChartMonth(value);
@@ -40,7 +61,7 @@ function ajaxCaller(url, dataToSend, SuccessCall, FailureCallBack) {
     });
 }
 
-function Chart(data) {
+function Chart(data,day) {
     $("#Inc").empty();
     var dataTemp = data.d;
     var IncomeArray = new Array();
@@ -48,7 +69,7 @@ function Chart(data) {
     var ExpArray = new Array();
     for (var i = 0; i < dataTemp.length; i++) {
         IncomeArray.push(dataTemp[i]["Incomes"]);
-        DateArray.push(dataTemp[i]["strDate"]);
+        DateArray.push(dataTemp[i][day]);
         ExpArray.push(dataTemp[i]["Expense"]);
     }
     //var s2 = [460, -210, 690, 820];
@@ -56,15 +77,14 @@ function Chart(data) {
     // Can specify a custom tick Array.
     // Ticks should match up one for each y value (category) in the series.
     var ticks = DateArray;
-
-    var plot1 = $.jqplot('Inc', [IncomeArray,ExpArray], {
+    var options = {
+        title:"Money Management",
         // The "seriesDefaults" option is an options object that will
         // be applied to all series in the chart.
-        
         seriesDefaults: {
             renderer: $.jqplot.BarRenderer(function () {
                 this.barPadding = 3
-                
+
             }),
             rendererOptions: { fillToZero: true }
         },
@@ -73,7 +93,7 @@ function Chart(data) {
         // is specified for each series.
         series: [
             { label: 'Income' },
-            {label: 'Expense'},
+            { label: 'Expense' },
             { label: 'strDate' },
             //{ label: 'Airfare' }
         ],
@@ -85,24 +105,29 @@ function Chart(data) {
             show: true,
             placement: 'outsideGrid'
         },
+
         axes: {
             // Use a category axis on the x axis and use our custom ticks.
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ticks
+                ticks: ticks,
+                label:"Day of the Date"
             },
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             yaxis: {
-                pad: 6,
-                tickOptions: { formatString: '$%d' }
+                pad: 1,
+                tickOptions: { formatString: '$%d' },
+                label:"Amount"
             }
         },
-    });
+    }
+    var plot1 = $.jqplot('Inc', [IncomeArray, ExpArray], options);
 }
 function SuccessCallInc(data) {
     var value = data;
-    Chart(value);
+    var day="Day"
+    Chart(value,day);
 }
 
 function SuccessCallExp(data) {
@@ -154,15 +179,16 @@ function ChartExp(data) {
             // Use a category axis on the x axis and use our custom ticks.
             xaxis: {
                 renderer: $.jqplot.CategoryAxisRenderer,
-                ticks: ticks
+                ticks: ticks,
             },
             // Pad the y axis just a little so bars can get close to, but
             // not touch, the grid boundaries.  1.2 is the default padding.
             yaxis: {
-                pad: 1.05,
+                pad: 1,
                 tickOptions: { formatString: '$%d' }
             }
-        }
+        },
+        
     });
 }
 

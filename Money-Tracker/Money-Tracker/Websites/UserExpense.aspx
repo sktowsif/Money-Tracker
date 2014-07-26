@@ -18,20 +18,26 @@
 </head>
 <body>
     <div>
-        <select id="sltMonth">
-        <option value="-1">Select</option>
+        <select id="sltYear">
+            <option value="-1">Select</option>
 
-    </select>
-        </div>
+        </select>
+    </div>
+    <div>
+        <select id="sltMonth">
+            <option value="-1">Select</option>
+
+        </select>
+    </div>
     <div>
         <select id="sltWeek">
-        <option value="-1">Select</option>
+            <option value="-1">Select</option>
 
-    </select>
-        </div>
-  <div id="Inc">
-      </div>
+        </select>
+    </div>
+    <div id="Inc">
+    </div>
     <div id="Exp">
-      </div>
+    </div>
 </body>
 </html>
