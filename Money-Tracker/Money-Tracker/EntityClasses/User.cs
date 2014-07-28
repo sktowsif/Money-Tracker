@@ -17,7 +17,7 @@ namespace Money_Tracker.EntityClasses
         public string Type { get; set; }
         public string Country { get; set;}
         public string GuId { get; set; }
-        public DateTime ResetTime { get; set; }
+        public string ResetTime { get; set; }
 
         string[] strArrColValuesUser = Properties.Settings.Default.User_Cols.Split('|');
         public bool InsertOperation()
@@ -82,20 +82,25 @@ namespace Money_Tracker.EntityClasses
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             DataTable dtTemp = new DataTable();
             dtTemp = objSqlConLib.SelectQuery(strQuery, strArrColNames, objArrColValue);
-            int intID;
-            int.TryParse(dtTemp.Rows[0]["Id"].ToString(), out intID);
             if (dtTemp.Rows.Count > 0)
                 return true;
             return false;
         }
 
-        public bool ResetOperation(Guid id,DateTime dt,string strEmail)
+        public bool ResetOperation(Guid id,string strTime,string strEmail)
         {
             string strQuery = "UPDATE [User] SET [GuId]=@Guid,[ResetTime]=@ResetTime WHERE [Email]=@Email";
             string[] strArrColNames = new string[] { "GuId","ResetTime","Email"};
-            object[] objArrColValue = new object[] { id,dt,strEmail };
+            object[] objArrColValue = new object[] { id, strTime, strEmail };
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             return objSqlConLib.ExecuteQuery(strQuery, strArrColNames, objArrColValue);
+        }
+
+        public List<User> GetInfoToChangePassword()
+        {
+            User objUser = new User();
+            List<User> lstUser = new List<User>();
+            return lstUser;
         }
 
     }

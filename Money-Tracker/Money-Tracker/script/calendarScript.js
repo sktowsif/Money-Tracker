@@ -1,6 +1,4 @@
 ﻿$(document).ready(function () {
-    
-
     ajaxCall('Helper.asmx/GetIncomeExpenseData', "{}", DataForCalendar, ErrorCallBack);
 });
 

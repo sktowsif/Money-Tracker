@@ -56,7 +56,7 @@ namespace SqlConnectorLib
                 objSqlComm.Parameters.AddWithValue(strArrColNames[i], objArrColValues[i]);    
 			}
             
-            if (objSqlComm.ExecuteNonQuery() > 1)
+            if (objSqlComm.ExecuteNonQuery() > 0)
                 blnRetVal = true;
 
             CloseConnection();

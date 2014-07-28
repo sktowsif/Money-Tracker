@@ -32,13 +32,6 @@ namespace Money_Tracker.Websites
             return objExp.GetExpense(TypeTranslation.GetInt(Id.ToString()));
         }
 
-
-        //public static List<Expenses> GetExpense(object Id)
-        //{
-        //    DateTime dtDate = DateTime.Today;
-        //    Expenses objExp = new Expenses();
-        //    objExp.GetAllWeeks(dtDate, "Weeks", "BalanceWeekly");
-        //}
         public static void FirstAndLastDayOfMonth(DateTime date, out DateTime first, out DateTime last)
         {
             first = new DateTime(date.Year, date.Month, 1);
@@ -65,7 +58,6 @@ namespace Money_Tracker.Websites
         {
             Months objMonths = new Months();
             return objMonths.GetMonths();
-
         }
 
         protected void Page_Load(object sender, EventArgs e)

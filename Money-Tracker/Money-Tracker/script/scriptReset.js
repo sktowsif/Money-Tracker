@@ -3,16 +3,21 @@
     var email='';
 
     $('#btn_search').click(function () {
-        email = $('#txt_resetEmail').val();
-        if (email.length != 0) {
-            if (!regex.test(email)) {
-                ShowMessage('Please enter a valid mail', 'information');
-                return;
+        if ($('#btn_search').val() == 'Search') {
+            email = $('#txt_resetEmail').val();
+            if (email.length != 0) {
+                if (!regex.test(email)) {
+                    ShowMessage('Please enter a valid mail', 'information');
+                    return;
+                }
+                CheckEmailPresent();
             }
-            CheckEmailPresent();
-        }
-        else {
-            ShowMessage('Enter email', 'information');
+            else {
+                ShowMessage('Enter email', 'information');
+            }
+        } else {
+            StoreInfoAboutReset();
+            $('#btn_search').val('Search');
         }
     });
 })
@@ -44,18 +49,6 @@ function ShowMessage(msg, type) {
     })
 }
 
-function SuccessValidEmail(data) {
-    var isValid = data.d;
-
-    if (isValid) {
-        ShowMessage('To get back to your account, follow the instruction we have sent to ur mail!','information')
-        var objEmail = JSON.stringify({ 'objEmail': [$('#txt_resetEmail').val()] });
-        //StoreInfoAboutReset();
-    }
-    else
-        ShowMessage('No account found with that email address.','error');
-}
-
 // check email present
 function CheckEmailPresent() {
     var email = $('#txt_resetEmail').val();
@@ -63,8 +56,24 @@ function CheckEmailPresent() {
     ajaxCall('Helper.asmx/CheckEmail', userLoginEmail, SuccessValidEmail, ErrorCallBack);
 }
 
+// Call if email present in database
+function SuccessValidEmail(data) {
+    var isValid = data.d;
+    if (isValid) {
+        $('#btn_search').val('Send');
+        ShowMessage('This is a registered emial.Click on send to get password recovery mail.', 'information');
+    }
+    else
+        ShowMessage('No account found with that email address.', 'error');
+}
+
+// ajax to send password reset mail 
 function StoreInfoAboutReset() {
     var email = $('#txt_resetEmail').val();
-    var userLoginEmail = JSON.stringify({ 'objUserEmail': [email] });
-    //ajaxCall('Helper.asmx/CheckEmail', userLoginEmail, SuccessValidEmail, ErrorCallBack);
+    var userLoginEmail = JSON.stringify({ 'objEmail': [email] });
+    ajaxCall('Helper.asmx/SendMail', userLoginEmail, SuccessEmailSent, ErrorCallBack);
+}
+// Mail sent success message
+function SuccessEmailSent() {
+    ShowMessage('To get back to your account, follow the instruction we have sent to ur mail!', 'information')
 }
