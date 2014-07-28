@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Services;
+using ValueTypeCasting;
 
 namespace Money_Tracker.Websites
 {
@@ -38,7 +39,47 @@ namespace Money_Tracker.Websites
             isValid = objUser.IsAlreadyRegistered(objUserEmail);
             return isValid;
         }
+        [WebMethod]
+        public  List<Income> GetIncome(object Id)
+        {
+            DateTime dtDate = DateTime.Today;
+            Income objInc = new Income();
+            return objInc.GetAllIncome(TypeTranslation.GetInt(Id.ToString()));
+        }
+        [WebMethod]
+        public  List<Expense> GetExpense(object Id)
+        {
+            DateTime dtDate = DateTime.Today;
+            Expense objExp = new Expense();
+            return objExp.GetExpense(TypeTranslation.GetInt(Id.ToString()));
+        }
+        public static void FirstAndLastDayOfMonth(DateTime date, out DateTime first, out DateTime last)
+        {
+            first = new DateTime(date.Year, date.Month, 1);
+            DateTime nextFirst;
+            if (first.Month == 12) nextFirst = new DateTime(first.Year + 1, 1, 1);
+            else nextFirst = new DateTime(first.Year, first.Month + 1, 1);
+            last = nextFirst.AddDays(-1);
+        }
+        [WebMethod]
+        public List<Income> GetSelectedMonth(int intId, int intYear, int intMonth)
+        {
+            string strDate = "01" + "-" + intMonth + "-" + intYear;
+            DateTime dtDate = Convert.ToDateTime(strDate);
+            DateTime dtFirst;
+            DateTime dtLast;
+            FirstAndLastDayOfMonth(dtDate, out dtFirst, out dtLast);
+            Income objIncome = new Income();
+            return objIncome.GetMonthlyIncomeData(intId, dtFirst, dtLast);
+        }
 
+        [WebMethod]
+        public  List<Months> GetMonths()
+        {
+            Months objMonths = new Months();
+            return objMonths.GetMonths();
+
+        }
         [WebMethod]
         public void SendMail(object[] objEmail)
         {
@@ -112,11 +153,24 @@ namespace Money_Tracker.Websites
         }
 
         [WebMethod]
-        public List<Year> GetYearData(int intYear)
+        public decimal GetBalance(int intId)
         {
-            Year objYear = new Year();
-            return objYear.GetYears();
-
+            Income objIncome = new Income();
+            return objIncome.GetBalance(intId);
+        }
+        [WebMethod]
+        public List<Income> GetYearData(int intId,int intYear)
+        {
+            DateTime dtFirstDay = new DateTime(intYear, 1, 1);
+            DateTime dtLastDay = new DateTime(intYear, 12, 31);
+            Income objIncome = new Income();
+            return objIncome.GetYearsData(intId,dtFirstDay, dtLastDay);
+        }
+        [WebMethod]
+        public void ExportToXL(int intId)
+        {
+            ExportToXL objEXL = new ExportToXL();
+            objEXL.Export(intId);
         }
 
         [WebMethod]
