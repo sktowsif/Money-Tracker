@@ -22,6 +22,7 @@ namespace Money_Tracker.EntityClasses
         public string Name { get; set; }
         public string MonthName { get; set; }
         public string Type { get; set; }
+        public decimal Balance { get; set; }
 
         string[] strArrColumn = Properties.Settings.Default.Income_Cols.Split('|');
 
@@ -73,12 +74,29 @@ namespace Money_Tracker.EntityClasses
             }
             return lstIncome;
         }
-
+        public decimal GetBalance(int intId)
+        {
+            string[] strArrTemp = {"User_Id"};
+            object[] objArrTemp = {intId};
+            SqlConLib objSqlConLibBal = new SqlConLib(Properties.Settings.Default.ConnectionString);
+            DataTable dtBalance = objSqlConLibBal.SelectQuery(@"select top (1) * from IncomeExpense where User_Id=@User_Id order by Id DESC ", strArrTemp, objArrTemp);
+            List<Income> lstIncome = new List<Income>();
+            if (dtBalance.Rows.Count != 0)
+            {
+               return this.Balance = TypeTranslation.GetDecimal(dtBalance.Rows[0]["Balance"].ToString());
+            }
+            else
+            {
+              return  this.Balance = 0;
+            }
+        }
         public bool InsertIncome(object[] objIncome)
         {
-            string[] strArrCol = { "User_Id", "Income", "Expense", "Date", "Category_Id", "Note" };
+            string[] strArrCol = { "User_Id", "Income", "Expense", "Date", "Category_Id", "Note", "Balance" };
             this.Date = DateTime.Now;
-            object[] objArrColValues = { objIncome[0], objIncome[1], objIncome[2], this.Date, objIncome[3], objIncome[4] };
+            this.Balance = GetBalance(TypeTranslation.GetInt(objIncome[0].ToString()));
+            this.Balance = this.Balance + TypeTranslation.GetDecimal(objIncome[1].ToString()) - TypeTranslation.GetDecimal(objIncome[2].ToString());
+            object[] objArrColValues = { objIncome[0], objIncome[1], objIncome[2], this.Date, objIncome[3], objIncome[4], this.Balance };
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
             return objSqlConLib.ExecuteQuery(@"INSERT INTO [dbo].[IncomeExpense]
                                                                    ([User_Id]
@@ -86,14 +104,16 @@ namespace Money_Tracker.EntityClasses
                                                                    ,[Expense]
                                                                    ,[Date]
                                                                    ,[Category_Id]
-                                                                   ,[Note])
+                                                                   ,[Note]
+                                                                   ,[Balance])
                                                              VALUES
                                                                    (@User_id
                                                                    ,@Income
                                                                    ,@Expense
                                                                    ,@Date
                                                                    ,@Category_Id
-                                                                   ,@Note)", strArrCol, objArrColValues);
+                                                                   ,@Note
+                                                                   ,@Balance)", strArrCol, objArrColValues);
         }
 
         public List<CalendarEvents> GetIncomeForCalendar()
@@ -132,10 +152,10 @@ namespace Money_Tracker.EntityClasses
         }
         public List<Income> GetMonthlyIncomeData(int intId, DateTime dtFDate, DateTime dtLDate)
         {
-            object[] objArrColValuesExpenseWeek = { dtFDate, dtLDate };
-            string[] strColValuesExpenseWeek = { "dtFDate", "dtLDate" };
+            object[] objArrColValuesExpenseWeek = { dtFDate, dtLDate, intId };
+            string[] strColValuesExpenseWeek = { "dtFDate", "dtLDate", "User_Id" };
             SqlConLib objSqlConLib1 = new SqlConLib(Properties.Settings.Default.ConnectionString);
-            DataTable dtTableWeekExpense = objSqlConLib1.SelectQuery(@"Select  Income,Date, expense from IncomeExpense where date between @dtFDate and @dtLDate", strColValuesExpenseWeek, objArrColValuesExpenseWeek);
+            DataTable dtTableWeekExpense = objSqlConLib1.SelectQuery(@"Select  sum(Income) as Income,Date as Date,sum(expense) as Expense from IncomeExpense where date between @dtFDate and @dtLDate AND User_Id=@User_Id  group by date", strColValuesExpenseWeek, objArrColValuesExpenseWeek);
             List<Income> lstIncome = new List<Income>();
             for (int i = 0; i < dtTableWeekExpense.Rows.Count; i++)
             {
@@ -148,20 +168,20 @@ namespace Money_Tracker.EntityClasses
             }
             return lstIncome;
         }
-        public List<Income> GetYearsData()
+        public List<Income> GetYearsData(int intId, DateTime dtFirstDate, DateTime dtLastDate)
         {
-            string[] strColValues = { };
-            object[] objArrColValues = { };
+            string[] strColValues = { "dtFirstDate", "dtLastDate", "User_Id" };
+            object[] objArrColValues = { dtFirstDate, dtLastDate, intId };
             SqlConLib objSqlConLib = new SqlConLib(Properties.Settings.Default.ConnectionString);
-            DataTable dtTable = objSqlConLib.SelectQuery(@"select sum(Income),sum(Expense),DATENAME(month,date) from IncomeExpense where date between
-                                                            '2014-01-01' and '2014-12-31' group by Datename(month,date)", strColValues, objArrColValues);
+            DataTable dtTable = objSqlConLib.SelectQuery(@"select sum(Income) as Income,sum(Expense) as Expense ,DATENAME(month,date) as MonthName from IncomeExpense where User_Id=@User_Id AND date between
+                                                            @dtFirstDate and @dtLastDate group by Datename(month,date)", strColValues, objArrColValues);
             List<Income> lstIncome = new List<Income>();
             for (int i = 0; i < dtTable.Rows.Count; i++)
             {
                 Income objIncome = new Income();
-                objIncome.Incomes= TypeTranslation.GetDecimal(dtTable.Rows[i]["Income"].ToString());
+                objIncome.Incomes = TypeTranslation.GetDecimal(dtTable.Rows[i]["Income"].ToString());
                 objIncome.Expense = TypeTranslation.GetDecimal(dtTable.Rows[i]["Expense"].ToString());
-                objIncome.MonthName = dtTable.Rows[i]["Expense"].ToString();
+                objIncome.MonthName = dtTable.Rows[i]["MonthName"].ToString();
                 lstIncome.Add(objIncome);
             }
             return lstIncome;

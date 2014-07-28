@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src="../Chart/jquery-1.11.1.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="mini social, free download, website templates, CSS, HTML" />
     <meta name="description" content="Mini Social is a free website template from templatemo.com" />
@@ -68,15 +67,24 @@
 
                 <div class="scroll">
                     <div class="scrollContainer">
-
-                        <div class="panel" id="home">
-                            <h1>Welcome</h1>
-                            <div id="contDiv">
-                                <a href="UserExpense.aspx">Click Here For Income and Expense Graphs</a>
-                                &nbsp;
-                            </div>
-                            <div id="divImg">
-                                <img src="../images/Dollar.jpg" id="imgDollar" />
+                        <div class="contact_form">
+                            <div class="panel" id="home">
+                                <h1>Welcome</h1>
+                                <div id="contDiv">
+                                    <div>
+                                        <span>Your Current Balance is :</span>
+                                        <label id="lblBal"></label>
+                                    </div>
+                                    <form method="post" name="contact" id="fmExport">
+                                        <div class="cleaner_h10"></div>
+                                        <input type="button" class="submit_btn" name="submit" id="btnExport" value="Export to Excel" />
+                                    </form>
+                                    <a href="UserExpense.aspx">Click Here For Income and Expense Graphs</a>
+                                    &nbsp;
+                                </div>
+                                <div id="divImg">
+                                    <img src="../images/Dollar.jpg" id="imgDollar" />
+                                </div>
                             </div>
                         </div>
                         <!-- end of home -->

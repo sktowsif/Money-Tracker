@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using ValueTypeCasting;
 
 namespace Money_Tracker.EntityClasses
 {
     public class Expense
     {
+        public decimal Income { get; set; }
         public int User_Id { get; set; }
         public decimal Expenses { get; set; }
         public DateTime Date { get; set; }
@@ -44,7 +46,7 @@ namespace Money_Tracker.EntityClasses
             Expense objExpense = null;
             List<Expense> lstExpense = new List<Expense>();
 
-            string strQuery = "SELECT [Expence],[Date],[Note] FROM [Expense]";
+            string strQuery = "SELECT [Expence],[Date],[Note],[Income] FROM [IncomeExpense]";
             string[] strArrColNames = { };
             object[] objArrColValue = { };
 
@@ -60,6 +62,7 @@ namespace Money_Tracker.EntityClasses
                 objExpense.Note = dtTemp.Rows[i]["Note"].ToString() != null ? dtTemp.Rows[i]["Note"].ToString() : string.Empty;
                 DateTime dateTemp = Convert.ToDateTime(dtTemp.Rows[i]["Date"].ToString());
                 objExpense.Date = dateTemp;
+               
                 lstExpense.Add(objExpense);
             }
             return lstExpense;
@@ -93,7 +96,7 @@ namespace Money_Tracker.EntityClasses
             Expense objExpense = new Expense();
             List<CalendarEvents> lstCalEvents = new List<CalendarEvents>();
 
-            string strQuery = "SELECT [Expence],[Date],[Note] FROM [Expense]";
+            string strQuery = "SELECT [Expence],[Date],[Note]FROM [Expense]";
             string[] strArrColNames = { };
             object[] objArrColValue = { };
 
